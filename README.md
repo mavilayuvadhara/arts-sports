@@ -1,5 +1,3 @@
-# mavilayuvadhara.github.io
-a society commited activity centre
 <details>
 <summary><b>ℹ️ Click here to see About Us details</b></summary>
 
