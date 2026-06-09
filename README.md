@@ -18,3 +18,7 @@ We are a community dedicated to learning, collaborating, and growing together.
 ### 📬 Contact Us
 If you have any questions, feel free to reach out:
 * **Email:** [Contact Us via Email](mailto:mavilayuvadhara@gmail.com)
+### 📝 Member Registration
+Ready to join the club? Click the button below to register:
+
+[![Register Here](https://img.shields.io/badge/Register_Now-Google_Forms-green?style=for-the-badge&logo=googleforms)]([https://forms.gle/your-actual-google-form-link](https://forms.gle/uDsJUJmZSNrSDbtB9))
