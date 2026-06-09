@@ -21,4 +21,4 @@ If you have any questions, feel free to reach out:
 ### 📝 Member Registration
 Ready to join the club? Click the button below to register:
 
-[![Register Here](https://img.shields.io/badge/Register_Now-Google_Forms-green?style=for-the-badge&logo=googleforms)]([https://forms.gle/your-actual-google-form-link](https://forms.gle/uDsJUJmZSNrSDbtB9))
+[![Register Here](https://forms.gle/KvwxUS3mXjrLTuPX8)
