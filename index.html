@@ -38,6 +38,16 @@
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
+        /* Styling for the Malayalam text inside the header */
+        .malayalam-title-header {
+            font-family: 'Karthika', 'AnjaliOldLipi', 'Gayathri', Arial, sans-serif;
+            font-size: 1.6em;
+            margin: 10px 0 0 0;
+            color: #ffd700; /* Gold color to make it shine against the banner */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-weight: normal;
+        }
+
         /* Navigation */
         nav {
             text-align: center;
@@ -122,4 +132,298 @@
             padding: 20px;
             background: #161b22;
             border-radius: 8px;
-            border: 1px solid #303
+            border: 1px solid #30363d;
+            margin-top: 20px;
+        }
+
+        /* Members Layout Grids */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .member-card {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #161b22;
+            transition: transform 0.3s;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+        .member-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 2px solid #30363d;
+        }
+        
+        /* Gold Neon Animated Glow for Premium Cards */
+        .paid-member {
+            border: 1px solid #ffd700;
+            background: linear-gradient(145deg, #1c1f26, #161b22);
+            animation: goldElectricGlow 4s infinite alternate;
+        }
+        @keyframes goldElectricGlow {
+            0% { box-shadow: 0 0 4px rgba(255, 215, 0, 0.15); }
+            100% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.45); }
+        }
+        .badge {
+            background-color: #ffd700;
+            color: #000;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: 0 0 6px #ffd700;
+        }
+
+        /* General PDF Section Box */
+        .pdf-download-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            max-width: 500px;
+            margin: 25px auto 0 auto;
+        }
+        .pdf-btn {
+            display: inline-block;
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #f0f6fc26;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .pdf-btn:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #161b22;
+            border-top: 1px solid #30363d;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Mavila Yuvadhara Arts & Sports Club</h1>
+        <!-- Added: Club Name in Malayalam with a gold glow right inside the lightning banner -->
+        <h2 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ് 
+കുറുമണ്ടൽ
+പരവൂർ പി ഒ
+കൊല്ലം 
+കേരള
+പിൻ : 691301 /h2>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="#join-us">Join Us</a> | 
+        <a href="gallery.html">Gallery</a> | 
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <p align="center" style="margin-top: 30px;">
+        <img src="logo.png" alt="Project Logo" width="200" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));">
+    </p>
+    
+    <!-- Updated: Section heading displays the name clearly in Malayalam as well -->
+    <h1 align="center" style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2em; line-height: 1.4;">
+        മാവില യുവധാര പോർട്ടൽ <br>
+        <span style="font-size: 16px; color: #58a6ff; letter-spacing: 2px; font-weight: normal; display: block; margin-top: 5px;">MAVILA YUVADHARA PORTAL</span>
+    </h1>
+
+    <main>
+        <!-- Welcome Section with Particle Grid System Background -->
+        <section id="welcome">
+            <canvas id="matrix-canvas"></canvas>
+            <div class="welcome-content">
+                <h2>Welcome to Our Community</h2>
+                <p>This club was founded to bring people together through the power of arts and sports. Explore our site to see what we are all about!</p>
+            </div>
+        </section>
+
+        <!-- Join Us / Registration Section -->
+        <section id="join-us" class="join-us-section">
+            <h2>🤝 Join Us & Become a Member!</h2>
+            <p style="color: #8b949e;">New member registrations are officially open. Be a part of our vibrant journey in arts and sports!</p>
+            <a href="https://forms.gle/SemVmMphrnuEmUTe6" target="_blank" class="register-btn">
+                ⚡ REGISTER HERE (Google Form)
+            </a>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            <p style="color: #8b949e;">Stay tuned for our next meeting! We meet every first Saturday and Sunday of each month at 6:00 PM.</p>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid #30363d; margin: 40px 0;">
+
+        <!-- Paid Members Section -->
+        <section id="paid-members">
+            <h2>🏅 Our Premium / Paid Members</h2>
+            <p style="color: #8b949e;">Special thanks to our registered premium members for their core support.</p>
+            
+            <div class="member-grid">
+                <!-- Paid Member 1 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member1.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pradeep'">
+                    <h3>Pradeep P G</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>President</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+
+                <!-- Paid Member 2 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member2.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Akash'">
+                    <h3>Akash A</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Secretary</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+            
+                <!-- Paid Member 3 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member3.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Sumesh'">
+                    <h3>Sumesh S P</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Vice-President</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>   
+                
+                <!-- Paid Member 4 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member4.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Athul'">
+                    <h3>Athul Ajay</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Joint-Secretary</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+
+                <!-- Paid Member 5 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member5.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Rajesh'">
+                    <h3>Rajesh R</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Convenor</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+
+                <!-- Paid Member 6 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member6.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pramod'">
+                    <h3>Pramod S</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Joint - Convenor</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+
+                <!-- Paid Member 7 -->
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member7.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Anoop'">
+                    <h3>Anoop J K</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Program Coordinator</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+            </div>
+        </section>
+
+        <!-- General Members PDF Section -->
+        <section id="general-members" style="margin-top: 50px;">
+            <h2>👥 General Members Directory</h2>
+            <p align="center" style="color: #8b949e;">The full roster of our general club members is available inside the master registry document below.</p>
+            
+            <div class="pdf-download-box">
+                <span style="font-size: 45px;">📄</span>
+                <h3 style="margin: 10px 0 5px 0; color: #ffffff;">General_Members_List.pdf</h3>
+                <p style="margin: 0; font-size: 13px; color: #8b949e;">Click below to view or save the complete directory.</p>
+                <a href="general-members.pdf" target="_blank" class="pdf-btn">
+                    📥 View / Download Member PDF
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Mavila Yuvadhara Arts & Sports Club. All rights reserved.</p>
+    </footer>
+
+    <!-- Graphic Engine Script -->
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.radius = Math.random() * 2 + 1;
+            }
+            move() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(88, 166, 255, 0.25)';
+                ctx.fill();
+            }
+        }
+
+        function setup() {
+            particles = [];
+            for (let i = 0; i < 40; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function run() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.move();
+                p.draw();
+            });
+            requestAnimationFrame(run);
+        }
+
+        setup();
+        run();
+    </script>
+</body>
+</html>
