@@ -105,7 +105,7 @@
             margin: 30px 0;
             box-shadow: 0 0 15px rgba(46, 164, 79, 0.1);
         }
-        
+         
         .register-btn {
             display: inline-block;
             background-color: #2ea44f;
@@ -157,7 +157,7 @@
         .member-card:hover {
             transform: translateY(-5px);
         }
-        
+         
         /* Gold Neon Animated Glow for Premium Cards */
         .paid-member {
             border: 1px solid #ffd700;
@@ -262,6 +262,58 @@
             font-size: 11px;
             color: #8b949e;
             margin: 0;
+        }
+
+        /* NEW: Social Media Section Styles */
+        .social-connect-section {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 50px 0 20px 0;
+        }
+        .social-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #ffffff;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 0 10px rgba(220, 39, 67, 0.2);
+        }
+        .instagram-btn:hover {
+            box-shadow: 0 0 20px rgba(220, 39, 67, 0.6);
+        }
+        .facebook-btn {
+            background-color: #1877f2;
+            box-shadow: 0 0 10px rgba(24, 119, 242, 0.2);
+        }
+        .facebook-btn:hover {
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -620,10 +672,26 @@
                 </div>
             </div>
         </section>
+
+        <!-- UPDATED: Social Media Connect Section -->
+        <section id="social-connect" class="social-connect-section">
+            <h2>🌐 Connect With Us on Social Media</h2>
+            <p style="color: #8b949e;">Follow our official pages to get live updates on our matches, arts programs, and festival celebrations.</p>
+            <div class="social-links-container">
+                <!-- Instagram Button -->
+                <a href="#" target="_blank" class="social-btn instagram-btn">
+                    📸 Follow us on Instagram
+                </a>
+                <!-- Facebook Button -->
+                <a href="#" target="_blank" class="social-btn facebook-btn">
+                    👥 Like us on Facebook
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 The Mavila Yuvadhara Arts & Sports Club. All rights reserved.</p>
+        <p>&copy; 1994 The Mavila Yuvadhara Arts & Sports Club. All rights reserved.</p>
     </footer>
 
     <!-- Graphic Engine Script -->
