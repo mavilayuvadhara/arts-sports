@@ -24,63 +24,61 @@
             <h2>Event Photos</h2>
             <p>Take a look at what our club members have been up to!</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px 0;">
-                <div style="text-align: center;">
-                    <img src="photo1.jpg" alt="Arts Event" style="width: 100%; border-radius: 8px;">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="photo1.jpg" alt="Arts Event">
                     <p>we as a group</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="photo2.jpg" alt="Sports Event" style="width: 100%; border-radius: 8px;">
+                <div class="gallery-item">
+                    <img src="photo2.jpg" alt="Sports Event">
                     <p>special ideas</p>
                 </div>
-             
-                <div style="text-align: center;">
-                    <img src="photo3.jpg" alt="A new Step" style="width: 100%; border-radius: 8px;">
-                    <p>in the new premise</p></div>
-            </div>
-             </div>
-                <div style="text-align: center;">
-                    <img src="photo4.jpg" alt="New Premise" style="width: 100%; border-radius: 8px;">
+                <div class="gallery-item">
+                    <img src="photo3.jpg" alt="A new Step">
+                    <p>in the new premise</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo4.jpg" alt="New Premise">
                     <p>in between heavy works</p>
-                    
-            
-        </div>
-                <div style="text-align: center;">
-                    <img src="photo5.jpg" alt="New Premise" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo5.jpg" alt="New Premise">
                     <p>in hard works</p>
-                  
-            
-      </div>
-                <div style="text-align: center;">
-                    <img src="photo6.jpg" alt="New Premise" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo6.jpg" alt="New Premise">
                     <p>in heavy works</p>
-                    <div style="text-align: center;">
-                               </div>
-               <div style="text-align: center;">
-                    <img src="photo7.jpg" alt="Our club" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo7.jpg" alt="Our club">
                     <p>pride</p>
-                   
-            </div>
-             <div style="text-align: center;">
-                    <img src="photo8.jpg" alt="Our club" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo8.jpg" alt="Our club">
                     <p>general body meeting</p>
-                
-         </div>
-             <div style="text-align: center;">
-                    <img src="photo8.jpg" alt="Our club" style="width: 100%; border-radius: 8px;">
-                    <p>general body meeting</p>
-                
-          </div>
-             <div style="text-align: center;">
-                    <img src="photo9.jpg" alt="Our club" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo9.jpg" alt="Our club">
                     <p>on a game mode</p>
-                 </div>
+                </div>
+            </div>
         </section>
-        
     </main>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <button class="nav-btn prev-btn">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Fullscreen view">
+            <p id="lightbox-caption"></p>
+        </div>
+        <button class="nav-btn next-btn">&#10095;</button>
+    </div>
 
     <footer>
         <p>&copy; 1994 The Mavila Yuvadhara Arts & Sports Club. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
