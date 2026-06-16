@@ -28,14 +28,14 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* Placed completely underneath everything */
+            z-index: -1; 
             pointer-events: none;
         }
 
         /* Content Wrappers tweaked with slight transparency & blur for maximum text readability */
         header, nav, main, footer {
             position: relative;
-            z-index: 2; /* Forces content cleanly above the background animation */
+            z-index: 2; 
         }
 
         /* Heading Styles Override */
@@ -53,7 +53,7 @@
             animation: lightningShift 8s ease infinite;
             color: #ffffff;
             border-bottom: 2px solid #30363d;
-            backdrop-filter: blur(8px); /* Helps separate header text from background movement */
+            backdrop-filter: blur(8px); 
         }
 
         @keyframes lightningShift {
@@ -104,7 +104,7 @@
 
         /* Logo Configuration (Transparent/White Blend) */
         .header-logo {
-            max-width: 140px;
+            max-width: 150px; /* Slightly increased to match larger texts */
             height: auto;
             background: transparent;
             display: block;
@@ -129,10 +129,10 @@
             display: block;
         }
 
-        /* Typography Configurations */
+        /* Typography Configurations (Increased font-sizes for better visibility) */
         .header-left h1.malayalam-title-header {
             font-family: 'Gayathri', 'Manjari', sans-serif;
-            font-size: 2.3em;
+            font-size: 2.6em; /* Increased from 2.3em */
             margin: 0;
             color: #ffd700; 
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
@@ -141,7 +141,7 @@
 
         .header-right h1.english-title-header {
             margin: 0;
-            font-size: 2.1em;
+            font-size: 2.3em; /* Increased from 2.1em */
             font-weight: 800;
             color: #ffffff;
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
@@ -150,7 +150,7 @@
 
         .malayalam-address {
             font-family: 'Gayathri', 'Manjari', sans-serif;
-            font-size: 1.4em;
+            font-size: 1.55em; /* Increased from 1.4em */
             color: #e2e8f0;
             line-height: 1.6;
             margin: 0;
@@ -158,7 +158,7 @@
 
         .english-address {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.05em;
+            font-size: 1.15em; /* Increased from 1.05em */
             color: #cbd5e1;
             line-height: 1.6;
             margin: 0;
@@ -197,7 +197,7 @@
             padding: 0 20px;
         }
 
-        /* Welcome section container rewritten for transparency */
+        /* Dashboard blocks styled with transparency and blur */
         #welcome {
             padding: 40px 30px;
             background: rgba(22, 27, 34, 0.85);
@@ -212,7 +212,6 @@
             color: #ffffff;
         }
 
-        /* Dashboard blocks styled with subtle transparency and blur to create depth over the moving matrix background */
         .join-us-section, #events, #user-submissions-section, #notice-board, #paid-members {
             background-color: rgba(22, 27, 34, 0.88) !important;
             border: 1px solid #30363d;
@@ -472,6 +471,12 @@
                 width: 100%;
                 box-sizing: border-box;
             }
+            .header-left h1.malayalam-title-header {
+                font-size: 2.1em;
+            }
+            .header-right h1.english-title-header {
+                font-size: 1.9em;
+            }
         }
 
         footer {
@@ -495,11 +500,11 @@
         <div class="header-row header-row-names">
             <div class="header-left">
                 <h1 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്</h1>
-                <span style="color: rgba(255, 215, 0, 0.85); font-size: 13px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
+                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
             </div>
             <div class="header-right">
                 <h1 class="english-title-header">The Mavila Yuvadhara Arts & Sports Club</h1>
-                <span style="color: rgba(255, 255, 255, 0.6); font-size: 13px; font-family: 'Poppins', sans-serif; display:block; margin-top:5px;">Reg No: Q 713/04</span>
+                <span style="color: rgba(255, 255, 255, 0.6); font-size: 14px; font-family: 'Poppins', sans-serif; display:block; margin-top:5px;">Reg No: Q 713/04</span>
             </div>
         </div>
 
@@ -546,7 +551,7 @@
     </div>
 
     <main>
-        <!-- Welcome Section without embedded canvas wrapper elements -->
+        <!-- Welcome Section -->
         <section id="welcome">
             <div class="welcome-content">
                 <h2>Welcome to Our Community</h2>
@@ -871,18 +876,16 @@
         });
 
         function drawMatrix() {
-            // Dark trailing overlay to keep contrast high over code text iterations
             ctx.fillStyle = 'rgba(13, 17, 23, 0.08)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = 'rgba(46, 164, 79, 0.28)'; // Dimmed alpha value so it forms a peaceful backdrop texture
+            ctx.fillStyle = 'rgba(46, 164, 79, 0.28)'; 
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < rainDrops.length; i++) {
                 const text = characters[Math.floor(Math.random() * characters.length)];
                 ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
 
-                // Lower random reset multiplier (0.99) creates a much more relaxed, slow-motion stream
                 if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.99) {
                     rainDrops[i] = 0;
                 }
@@ -890,7 +893,6 @@
             }
         }
         
-        // Interval cycle bumped up to 55ms for a smoother, slower drop cadence
         setInterval(drawMatrix, 55);
 
         // ==========================================
@@ -919,6 +921,7 @@
             postCard.style.border = '1px solid #30363d';
             postCard.style.borderRadius = '6px';
             postCard.style.padding = '20px';
+            postCard.style.removeAttribute;
             postCard.style.marginBottom = '15px';
             postCard.style.textAlign = 'left';
 
