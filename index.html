@@ -73,7 +73,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1; /* Allows the image column to fit the remaining window width dynamically */
+            flex: 1; 
             min-width: 200px;
             padding: 0 15px;
         }
@@ -84,15 +84,31 @@
             min-width: 250px;
         }
 
-        /* Nature Image Center Styling */
-        .header-nature-bg {
-            width: 100%;
-            height: 120px; /* Locked explicit height execution */
-            object-fit: cover; /* Fits window width perfectly without distorting height aspect */
-            border-radius: 6px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        /* Logo Configuration (Transparent/White Blend) */
+        .header-logo {
+            max-width: 140px;
+            height: auto;
+            background: transparent;
             display: block;
             margin: 0 auto;
+            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.3));
+        }
+
+        /* Nature Image Placement Styling */
+        .nature-banner-container {
+            max-width: 1100px;
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .nature-bg-banner {
+            width: 100%;
+            height: 220px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            display: block;
         }
 
         /* Typography Configurations */
@@ -420,6 +436,20 @@
             box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
         }
 
+        /* Dynamic Input Enhancements */
+        #communityForm input, 
+        #communityForm select, 
+        #communityForm textarea {
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        #communityForm input:focus, 
+        #communityForm select:focus, 
+        #communityForm textarea:focus {
+            border-color: #58a6ff !important;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
         /* Mobile adaptation adjustments */
         @media (max-width: 768px) {
             .header-row {
@@ -433,7 +463,6 @@
                 margin: 15px 0;
                 width: 100%;
                 box-sizing: border-box;
-                order: 2; /* Keeps image in the center visually when stacked */
             }
         }
 
@@ -462,7 +491,7 @@
             </div>
         </div>
 
-        <!-- Bottom Section: Addresses split with window-fitting nature background element -->
+        <!-- Bottom Section: Addresses split with logo.png placed exactly in the middle -->
         <div class="header-row" style="align-items: center;">
             <!-- Left Side: Malayalam Address -->
             <div class="header-left">
@@ -473,9 +502,9 @@
                 </p>
             </div>
             
-            <!-- Exact Center: Nature Image Replacement Placement -->
+            <!-- Center: Transparent/White Logo Space Holder -->
             <div class="header-center">
-                <img src="nature.jpg" alt="Nature Scene" class="header-nature-bg">
+                <img src="logo.png" alt="Yuvadhara Club Logo" class="header-logo" onerror="this.style.display='none'">
             </div>
 
             <!-- Right Side: English Address -->
@@ -498,10 +527,15 @@
     </nav>
     
     <!-- Mid-Page Welcome Title -->
-    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px;" class="malayalam-text">
+    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px; margin-bottom: 15px;" class="malayalam-text">
         മാവിള യുവധാര പോർട്ടൽ <br>
         <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
     </h1>
+
+    <!-- Nature Image Banner Placement (Just below the Portal Title Headline) -->
+    <div class="nature-banner-container">
+        <img src="nature.jpg" alt="Nature Banner View" class="nature-bg-banner" onerror="this.src='https://via.placeholder.com/1100x220/161b22/30363d?text=Mavila+Yuvadhara+Arts+%26+Sports+Club'">
+    </div>
 
     <main>
         <!-- Welcome Section with Particle Grid System Background -->
@@ -780,110 +814,149 @@
                     <h4>Shajahan</h4>
                     <p>Club Member</p>
                 </div>
-                <div class="directory-card">
-                    <img src="member35.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
-                    <h4>Sooraj</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member36.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
-                    <h4>Vipin</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member37.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
-                    <h4>Babu</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member38.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
-                    <h4>Manoj</h4>
-                    <p>Club Member</p>
-                </div>
             </div>
         </section>
 
-        <!-- Social Media Connect Section -->
-        <section id="social-connect" class="social-connect-section">
-            <h2>🌐 Connect With Us on Social Media</h2>
-            <p style="color: #8b949e;">Follow our official pages to get live updates on our matches, arts programs, and festival celebrations.</p>
+        <!-- Social Media Section -->
+        <section class="social-connect-section">
+            <h2>📱 Connect With Us On Social Media</h2>
+            <p style="color: #8b949e;">Follow our active pipelines to stay updated on matches, cultural nights, and announcements.</p>
             <div class="social-links-container">
-                <a href="https://www.instagram.com/mavila_yuvadhara?igsh=MTkzOGo2ejNvMHF6Ng%3D%3D&utm_source=qr" target="_blank" class="social-btn instagram-btn">
-                    📸 Follow us on Instagram
+                <a href="https://www.instagram.com/yuvadhara_arts_and_sports_cl" target="_blank" class="social-btn instagram-btn">
+                    📸 Instagram Profile
                 </a>
-                <a href="https://www.facebook.com/share/15asg7Cq8e/" target="_blank" class="social-btn facebook-btn">
-                    👥 Like us on Facebook
+                <a href="https://www.facebook.com/share/15asC7vL2b/" target="_blank" class="social-btn facebook-btn">
+                    👥 Facebook Page
                 </a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 1994 The Mavila Yuvadhara Arts & Sports Club. All rights reserved.</p>
+        <p>© 2026 Mavila Yuvadhara Arts and Sports Club. All Rights Reserved.</p>
+        <p style="font-size: 11px; margin-top: 5px; color: #484f58;">Reg No: Q 713/04 | Kurumandal, Paravoor, Kollam, Kerala</p>
     </footer>
 
-    <!-- Graphic Engine Script -->
+    <!-- Dynamic JavaScript Implementation Block -->
     <script>
+        // ==========================================
+        // 1. INTERACTIVE MATRIX CANVAS BACKGROUND
+        // ==========================================
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationFrameId;
 
-        function resize() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+        function resizeCanvas() {
+            const container = document.getElementById('welcome');
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
         }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const characters = 'YUVADHARAARTS&SPORTS01'.split('');
+        const fontSize = 14;
+        let columns = canvas.width / fontSize;
+        let rainDrops = Array(Math.floor(columns)).fill(1);
 
         window.addEventListener('resize', () => {
-            cancelAnimationFrame(animationFrameId);
-            resize();
-            setup();
-            run();
+            columns = canvas.width / fontSize;
+            rainDrops = Array(Math.floor(columns)).fill(1);
         });
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(22, 27, 34, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#2ea44f'; 
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
         
-        resize();
+        setInterval(drawMatrix, 35);
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.7;
-                this.vy = (Math.random() - 0.5) * 0.7;
-                this.radius = Math.random() * 2 + 1;
+        // ==========================================
+        // 2. COMMUNITY FEED SUBMISSION LOGIC
+        // ==========================================
+        const communityForm = document.getElementById('communityForm');
+        const feedContainer = document.getElementById('approved-feed-container');
+
+        communityForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('userName').value.trim();
+            const typeSelect = document.getElementById('submissionType');
+            const typeText = typeSelect.options[typeSelect.selectedIndex].text;
+            const message = document.getElementById('userMessage').value.trim();
+            const fileInput = document.getElementById('userFile');
+
+            if (!name || !message) return;
+
+            if (feedContainer.querySelector('p[style*="italic"]')) {
+                feedContainer.innerHTML = '';
             }
-            move() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+            const postCard = document.createElement('div');
+            postCard.style.background = '#0d1117';
+            postCard.style.border = '1px solid #30363d';
+            postCard.style.borderRadius = '6px';
+            postCard.style.padding = '20px';
+            postCard.style.removeAttribute;
+            postCard.style.marginBottom = '15px';
+            postCard.style.textAlign = 'left';
+
+            let postHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #21262d; padding-bottom: 8px; margin-bottom: 12px;">
+                    <strong style="color: #ffffff; font-size: 1.05em;">👤 ${escapeHTML(name)}</strong>
+                    <span style="font-size: 12px; background: #21262d; color: #58a6ff; padding: 3px 8px; border-radius: 12px; font-weight: 600;">${typeText}</span>
+                </div>
+                <p style="color: #c9d1d9; margin: 0 0 12px 0; white-space: pre-wrap; font-size: 0.95em;">${escapeHTML(message)}</p>
+            `;
+
+            postCard.innerHTML = postHTML;
+
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.style.marginTop = "10px";
+                    
+                    const imgElement = document.createElement('img');
+                    imgElement.src = event.target.result;
+                    imgElement.alt = "Submission Attachment";
+                    imgElement.style.maxWidth = "100%";
+                    imgElement.style.maxHeight = "300px";
+                    imgElement.style.borderRadius = "6px";
+                    imgElement.style.border = "1px solid #30363d";
+                    
+                    imgContainer.appendChild(imgElement);
+                    postCard.appendChild(imgContainer);
+                };
+
+                reader.readAsDataURL(file);
             }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(88, 166, 255, 0.25)';
-                ctx.fill();
-            }
+            
+            feedContainer.insertBefore(postCard, feedContainer.firstChild);
+            communityForm.reset();
+            alert('🎉 Success! Your post was parsed to the community feed below.');
+        });
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
         }
-
-        function setup() {
-            particles = [];
-            for (let i = 0; i < 40; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function run() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.move();
-                p.draw();
-            });
-            animationFrameId = requestAnimationFrame(run);
-        }
-
-        setup();
-        run();
     </script>
 </body>
 </html>
