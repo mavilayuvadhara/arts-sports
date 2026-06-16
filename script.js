@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
 
-    // Function to update Lightbox content
     const showImage = (index) => {
         const item = galleryItems[index];
         const img = item.querySelector("img");
@@ -21,48 +20,44 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = index;
     };
 
-    // Open Lightbox when clicking a grid item
+    // Open Lightbox using the .active class
     galleryItems.forEach((item, index) => {
         item.addEventListener("click", () => {
-            lightbox.style.display = "flex";
+            lightbox.classList.add("active");
             showImage(index);
         });
     });
 
     // Close Lightbox
     closeBtn.addEventListener("click", () => {
-        lightbox.style.display = "none";
+        lightbox.classList.remove("active");
     });
 
-    // Next Button Functionality
     nextBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevents clicking through to underlying elements
+        e.stopPropagation();
         let nextIndex = currentIndex + 1;
-        if (nextIndex >= galleryItems.length) nextIndex = 0; // Loop back to start
+        if (nextIndex >= galleryItems.length) nextIndex = 0;
         showImage(nextIndex);
     });
 
-    // Previous Button Functionality
     prevBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         let prevIndex = currentIndex - 1;
-        if (prevIndex < 0) prevIndex = galleryItems.length - 1; // Loop back to end
+        if (prevIndex < 0) prevIndex = galleryItems.length - 1;
         showImage(prevIndex);
     });
 
-    // Close Lightbox if clicking outside the image content box
     lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) {
-            lightbox.style.display = "none";
+            lightbox.classList.remove("active");
         }
     });
 
-    // Optional: Add keyboard support (Left/Right Arrows and Escape)
     document.addEventListener("keydown", (e) => {
-        if (lightbox.style.display === "flex") {
+        if (lightbox.classList.contains("active")) {
             if (e.key === "ArrowRight") nextBtn.click();
             if (e.key === "ArrowLeft") prevBtn.click();
-            if (e.key === "Escape") lightbox.style.display = "none";
+            if (e.key === "Escape") lightbox.classList.remove("active");
         }
     });
 });
