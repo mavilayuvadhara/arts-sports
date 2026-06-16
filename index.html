@@ -4,18 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Our Club - Mavila Yuvadhara Arts and Sports Club</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    
+    <!-- Google Fonts Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&family=Inter:wght@300;400;600;700&family=Manjari:wght@400;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         /* Modern Dark Theme Base for Graphic Contrast */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #0d1117; 
             color: #c9d1d9;
+            line-height: 1.6;
         }
 
-        /* 1. Shifting Lightning Gradient Header */
+        /* Heading Styles Override */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Shifting Lightning Gradient Header */
         header {
             text-align: center;
             padding: 40px 20px;
@@ -34,32 +47,42 @@
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            font-weight: 800;
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Universal Malayalam typography wrapper class */
+        .malayalam-text {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-weight: 700;
         }
 
         /* Styling for the Malayalam text inside the header */
         .malayalam-title-header {
-            font-family: 'Karthika', 'AnjaliOldLipi', 'Gayathri', Arial, sans-serif;
-            font-size: 1.6em;
-            margin: 10px 0 0 0;
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 1.8em;
+            margin: 15px 0 0 0;
             color: #ffd700; /* Gold color to make it shine against the banner */
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            font-weight: normal;
+            line-height: 1.5;
         }
 
         /* Navigation */
         nav {
             text-align: center;
-            padding: 12px;
+            padding: 14px;
             background-color: #161b22;
             border-bottom: 1px solid #30363d;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
         }
         nav a {
             color: #58a6ff;
             text-decoration: none;
             padding: 0 15px;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.2s, text-shadow 0.2s;
         }
         nav a:hover {
             color: #58a6ff;
@@ -75,7 +98,7 @@
         /* Interactive Moving Matrix Canvas Background */
         #welcome {
             position: relative;
-            padding: 30px;
+            padding: 40px 30px;
             background: rgba(22, 27, 34, 0.85);
             border: 1px solid #30363d;
             border-radius: 8px;
@@ -94,6 +117,11 @@
             position: relative;
             z-index: 2;
         }
+        .welcome-content h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #ffffff;
+        }
 
         /* Moving Neon Glow for Registration Block */
         .join-us-section {
@@ -111,13 +139,15 @@
             background-color: #2ea44f;
             color: white;
             padding: 14px 28px;
-            font-size: 18px;
-            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 6px;
             margin-top: 15px;
             animation: electricGreenPulse 2s infinite alternate;
             transition: transform 0.2s;
+            letter-spacing: 0.5px;
         }
         .register-btn:hover {
             transform: scale(1.05);
@@ -129,20 +159,24 @@
         }
 
         #events {
-            padding: 20px;
+            padding: 30px;
             background: #161b22;
             border-radius: 8px;
             border: 1px solid #30363d;
             margin-top: 20px;
         }
+        #events h2 {
+            margin-top: 0;
+            color: #ffffff;
+        }
 
         /* Subheadings for Member groups */
         .member-section-title {
             color: #ffffff;
-            font-size: 1.3em;
-            margin: 30px 0 15px 0;
+            font-size: 1.4em;
+            margin: 40px 0 20px 0;
             border-left: 4px solid #ffd700;
-            padding-left: 10px;
+            padding-left: 12px;
         }
 
         /* Members Layout Grids */
@@ -152,7 +186,11 @@
             padding: 20px;
             text-align: center;
             background: #161b22;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .member-card h3 {
+            margin: 10px 0 5px 0;
+            font-size: 1.2em;
         }
         .member-card:hover {
             transform: translateY(-5px);
@@ -171,13 +209,15 @@
         .badge {
             background-color: #ffd700;
             color: #000;
-            padding: 3px 10px;
-            font-size: 11px;
-            font-weight: bold;
+            padding: 4px 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
             border-radius: 12px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             box-shadow: 0 0 6px #ffd700;
+            letter-spacing: 0.5px;
         }
 
         /* ROW 1: Executive Grid Style */
@@ -214,8 +254,8 @@
             border: 2px solid #30363d;
         }
         .premium-grid .member-card h3 {
-            font-size: 1.05em;
-            margin: 8px 0;
+            font-size: 1.1em;
+            margin: 8px 0 4px 0;
         }
         .premium-grid .member-card p {
             font-size: 12px !important;
@@ -234,12 +274,13 @@
             border-radius: 8px;
             padding: 12px;
             text-align: center;
-            background: #0d1117; /* Slightly darker than premium cards to show hierarchy */
-            transition: border-color 0.2s;
+            background: #0d1117; 
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .directory-card:hover {
             border-color: #58a6ff;
+            transform: translateY(-2px);
         }
 
         .directory-card img {
@@ -249,13 +290,14 @@
             object-fit: cover;
             margin-bottom: 8px;
             border: 1px solid #30363d;
-            filter: grayscale(40%); /* Subtle visual distinction */
+            filter: grayscale(40%); 
         }
 
         .directory-card h4 {
             margin: 5px 0;
-            font-size: 0.9em;
+            font-size: 0.95em;
             color: #c9d1d9;
+            font-weight: 600;
         }
 
         .directory-card p {
@@ -264,7 +306,7 @@
             margin: 0;
         }
 
-        /* NEW: Social Media Section Styles */
+        /* Social Media Section Styles */
         .social-connect-section {
             background-color: #161b22;
             border: 1px solid #30363d;
@@ -284,8 +326,9 @@
             display: inline-flex;
             align-items: center;
             padding: 12px 24px;
+            font-family: 'Poppins', sans-serif;
             font-size: 15px;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
             border-radius: 6px;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -310,7 +353,7 @@
         }
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             border-top: 1px solid #30363d;
             color: #8b949e;
             font-size: 14px;
@@ -335,14 +378,15 @@
         <a href="contact.html">Contact Us</a>
     </nav>
 
-    <!-- LOGO FIX APPLIED HERE -->
-    <p align="center" style="margin-top: 30px;">
+    <!-- Logo Display -->
+    <p style="text-align: center; margin-top: 30px;">
         <img src="logo.png?v=2" alt="Project Logo" width="200" style="mix-blend-mode: screen; filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));">
     </p>
     
-    <h1 align="center" style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2em; line-height: 1.4;">
+    <!-- Mid-Page Welcome Title -->
+    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2.2em; line-height: 1.4; font-weight: bold;" class="malayalam-text">
         മാവിള യുവധാര പോർട്ടൽ <br>
-        <span style="font-size: 16px; color: #58a6ff; letter-spacing: 2px; font-weight: normal; display: block; margin-top: 5px;">MAVILA YUVADHARA PORTAL</span>
+        <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
     </h1>
 
     <main>
@@ -595,7 +639,6 @@
                     <p>Club Member</p>
                 </div>
 
-                
                 <!-- General Member -->
                 <div class="directory-card">
                     <img src="member29.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
@@ -668,7 +711,7 @@
             </div>
         </section>
 
-        <!-- UPDATED: Social Media Connect Section -->
+        <!-- Social Media Connect Section -->
         <section id="social-connect" class="social-connect-section">
             <h2>🌐 Connect With Us on Social Media</h2>
             <p style="color: #8b949e;">Follow our official pages to get live updates on our matches, arts programs, and festival celebrations.</p>
@@ -678,7 +721,7 @@
                     📸 Follow us on Instagram
                 </a>
                 <!-- Facebook Button -->
-                <a href="#" target="_blank" class="social-btn facebook-btn">
+                <a href="https://www.facebook.com/share/15asg7Cq8e/" target="_blank" class="social-btn facebook-btn">
                     👥 Like us on Facebook
                 </a>
             </div>
@@ -694,12 +737,21 @@
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let animationFrameId;
 
         function resize() {
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
         }
-        window.addEventListener('resize', resize);
+
+        // Optimized resize listener with basic throttling behavior via requestAnimationFrame
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(animationFrameId);
+            resize();
+            setup();
+            run();
+        });
+        
         resize();
 
         class Particle {
@@ -737,7 +789,7 @@
                 p.move();
                 p.draw();
             });
-            requestAnimationFrame(run);
+            animationFrameId = requestAnimationFrame(run);
         }
 
         setup();
