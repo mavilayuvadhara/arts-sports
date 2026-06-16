@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. Base & Layout Styles
+   ========================================================================== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,20 +8,24 @@ body {
     text-align: center;
     background-color: #f4f4f9;
 }
+
 header {
     background-color: #333;
     color: white;
     padding: 20px;
 }
+
 nav {
     margin: 20px 0;
 }
+
 nav a {
     text-decoration: none;
     color: #0076a3;
     font-weight: bold;
     padding: 0 10px;
 }
+
 main {
     max-width: 800px;
     margin: auto;
@@ -26,7 +33,10 @@ main {
     background: white;
     border-radius: 8px;
 }
-/* Gallery Layout Styling */
+
+/* ==========================================================================
+   2. Gallery Grid Layout
+   ========================================================================== */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -51,40 +61,54 @@ main {
     height: 200px; /* Forces uniform height on grid thumbnails */
 }
 
-/* Centered content area */
+/* ==========================================================================
+   3. Fullscreen Lightbox (Fixed & Cleaned)
+   ========================================================================== */
+
+/* The main fullscreen dark container overlay */
+.lightbox {
+    display: none; /* Controlled dynamically by JavaScript */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    
+    /* Layout styling for desktop side-by-side view */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+/* Bounded content container area */
 .lightbox-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;  /* Leaves room for the side arrows on large screens */
-    max-width: 800px; /* Prevents huge pixelation on giant monitors */
+    flex-grow: 1;
+    
+    /* Leaves room mathematically on desktop layout for navigation arrows */
+    max-width: calc(100vw - 180px); 
+    max-height: 80vh; 
+    overflow: hidden;
 }
 
-/* Fix: Keeps the image fully contained inside the window bounds */
+/* The ultimate absolute fit fix for images */
 .lightbox-content img {
-    width: 100%;
-    height: auto;
-    max-height: 75vh; /* Limits image height to 75% of the screen height */
-    object-fit: contain; /* Shrinks the image proportionally without cropping it */
+    display: block;
+    max-width: 100%;       /* Never allows image wider than content container */
+    max-height: 70vh;      /* Never allows image taller than 70% of viewport height */
+    width: auto;           /* Maintains true aspect ratios proportional scaling */
+    height: auto;          /* Maintains true aspect ratios proportional scaling */
+    object-fit: contain;   /* Strict browser directive to keep image inside limits */
     border-radius: 4px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-}
-
-/* Centered content area */
-.lightbox-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 70vh;
-    border-radius: 4px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
 }
 
 #lightbox-caption {
@@ -92,9 +116,12 @@ main {
     margin-top: 15px;
     font-size: 1.2rem;
     text-shadow: 1px 1px 2px #000;
+    text-align: center;
 }
 
-/* Control Buttons */
+/* ==========================================================================
+   4. Control Buttons
+   ========================================================================== */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -104,6 +131,7 @@ main {
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    z-index: 10000;
 }
 
 .close-btn:hover {
@@ -123,6 +151,7 @@ main {
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    flex-shrink: 0; /* Prevents arrows from shrinking if text or images push outward */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,27 +160,30 @@ main {
 .nav-btn:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
-/* Mobile Optimization */
+
+/* ==========================================================================
+   5. Mobile Optimization
+   ========================================================================== */
 @media (max-width: 600px) {
     .lightbox {
-        /* Changes layout from row to column so buttons sit under/above image */
         flex-direction: column; 
         justify-content: center;
+        padding: 0;
     }
 
     .lightbox-content {
-        width: 95%; /* Use almost full width on mobile */
+        max-width: 95vw; /* Almost entire screen width allocated to mobile */
         max-height: 60vh;
     }
 
     .lightbox-content img {
-        max-height: 55vh; /* Ensures image leaves plenty of vertical space for buttons */
+        max-height: 50vh; /* Scales down image strictly to leave bottom thumb-tap space */
     }
 
-    /* Reposition buttons to look clean on touchscreens */
+    /* Stacks control arrows cleanly near the bottom for easy thumb access */
     .nav-btn {
         position: absolute;
-        bottom: 40px; /* Moves arrows to the bottom for easy thumb-tapping */
+        bottom: 5%; 
         width: 50px;
         height: 50px;
         font-size: 24px;
