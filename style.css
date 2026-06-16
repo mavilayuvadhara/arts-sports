@@ -62,12 +62,11 @@ main {
 }
 
 /* ==========================================================================
-   3. Fullscreen Lightbox (Fixed & Cleaned)
+   3. Fullscreen Lightbox (Fixed Viewport Bounds)
    ========================================================================== */
 
 /* The main fullscreen dark container overlay */
 .lightbox {
-    display: none; /* Controlled dynamically by JavaScript */
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -81,7 +80,18 @@ main {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 40px;
+
+    /* FIXED: Better way to hide element so dimensions calculate properly */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Class added by JavaScript to show the lightbox */
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Bounded content container area */
@@ -92,20 +102,20 @@ main {
     justify-content: center;
     flex-grow: 1;
     
-    /* Leaves room mathematically on desktop layout for navigation arrows */
-    max-width: calc(100vw - 180px); 
+    /* Strict scaling bounds */
+    max-width: calc(100vw - 220px); 
     max-height: 80vh; 
-    overflow: hidden;
+    box-sizing: border-box;
 }
 
-/* The ultimate absolute fit fix for images */
+/* The absolute fix for large images */
 .lightbox-content img {
     display: block;
-    max-width: 100%;       /* Never allows image wider than content container */
-    max-height: 70vh;      /* Never allows image taller than 70% of viewport height */
-    width: auto;           /* Maintains true aspect ratios proportional scaling */
-    height: auto;          /* Maintains true aspect ratios proportional scaling */
-    object-fit: contain;   /* Strict browser directive to keep image inside limits */
+    max-width: 100%;       /* Never wider than .lightbox-content */
+    max-height: 70vh;      /* Never taller than 70% of viewport height */
+    width: auto !important;  /* Overrides original image width */
+    height: auto !important; /* Overrides original image height */
+    object-fit: contain;   /* Strict box constraint scaling */
     border-radius: 4px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -147,11 +157,10 @@ main {
     cursor: pointer;
     user-select: none;
     transition: 0.3s;
-    margin: 0 10px;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    flex-shrink: 0; /* Prevents arrows from shrinking if text or images push outward */
+    flex-shrink: 0; /* Prevents arrows from shrinking */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,7 +186,7 @@ main {
     }
 
     .lightbox-content img {
-        max-height: 50vh; /* Scales down image strictly to leave bottom thumb-tap space */
+        max-height: 50vh; /* Scales down image strictly to leave bottom thumb space */
     }
 
     /* Stacks control arrows cleanly near the bottom for easy thumb access */
