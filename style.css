@@ -51,18 +51,24 @@ main {
     height: 200px; /* Forces uniform height on grid thumbnails */
 }
 
-/* Lightbox Fullscreen Background */
-.lightbox {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+/* Centered content area */
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    width: 90%;  /* Leaves room for the side arrows on large screens */
+    max-width: 800px; /* Prevents huge pixelation on giant monitors */
+}
+
+/* Fix: Keeps the image fully contained inside the window bounds */
+.lightbox-content img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh; /* Limits image height to 75% of the screen height */
+    object-fit: contain; /* Shrinks the image proportionally without cropping it */
+    border-radius: 4px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
 }
 
 /* Centered content area */
