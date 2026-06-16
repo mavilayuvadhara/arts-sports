@@ -44,7 +44,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Header Split Grid System (Left & Right Layout) */
+        /* Header Split Layout System */
         .header-row {
             display: flex;
             justify-content: space-between;
@@ -61,17 +61,38 @@
             margin-bottom: 20px;
         }
 
-        /* Header Side Wrappers */
+        /* Header Layout Units */
         .header-left {
             text-align: left;
             flex: 1;
-            min-width: 280px;
+            min-width: 250px;
+        }
+
+        .header-center {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* Allows the image column to fit the remaining window width dynamically */
+            min-width: 200px;
+            padding: 0 15px;
         }
 
         .header-right {
             text-align: right;
             flex: 1;
-            min-width: 280px;
+            min-width: 250px;
+        }
+
+        /* Nature Image Center Styling */
+        .header-nature-bg {
+            width: 100%;
+            height: 120px; /* Locked explicit height execution */
+            object-fit: cover; /* Fits window width perfectly without distorting height aspect */
+            border-radius: 6px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            display: block;
+            margin: 0 auto;
         }
 
         /* Typography Configurations */
@@ -308,7 +329,7 @@
             font-size: 12px !important;
         }
 
-        /* Directory Grid: Most compact for general members */
+        /* Directory Grid */
         .directory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -401,8 +422,18 @@
 
         /* Mobile adaptation adjustments */
         @media (max-width: 768px) {
+            .header-row {
+                flex-direction: column;
+                align-items: center;
+            }
             .header-left, .header-right {
                 text-align: center !important;
+            }
+            .header-center {
+                margin: 15px 0;
+                width: 100%;
+                box-sizing: border-box;
+                order: 2; /* Keeps image in the center visually when stacked */
             }
         }
 
@@ -431,8 +462,9 @@
             </div>
         </div>
 
-        <!-- Bottom Section: Addresses (Left: Malayalam | Right: English) -->
-        <div class="header-row">
+        <!-- Bottom Section: Addresses split with window-fitting nature background element -->
+        <div class="header-row" style="align-items: center;">
+            <!-- Left Side: Malayalam Address -->
             <div class="header-left">
                 <p class="malayalam-address">
                     കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
@@ -440,6 +472,13 @@
                     പിൻ : 691301
                 </p>
             </div>
+            
+            <!-- Exact Center: Nature Image Replacement Placement -->
+            <div class="header-center">
+                <img src="nature.jpg" alt="Nature Scene" class="header-nature-bg">
+            </div>
+
+            <!-- Right Side: English Address -->
             <div class="header-right">
                 <p class="english-address">
                     Kurumandal, Paravoor P.O.<br>
@@ -457,14 +496,9 @@
         <a href="gallery.html">Gallery</a> | 
         <a href="contact.html">Contact Us</a>
     </nav>
-
-    <!-- Logo Display -->
-    <p style="text-align: center; margin-top: 30px;">
-        <img src="logo.png?v=2" alt="Project Logo" width="200" style="mix-blend-mode: screen; filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));">
-    </p>
     
     <!-- Mid-Page Welcome Title -->
-    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2.2em; line-height: 1.4; font-weight: bold;" class="malayalam-text">
+    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px;" class="malayalam-text">
         മാവിള യുവധാര പോർട്ടൽ <br>
         <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
     </h1>
@@ -530,12 +564,11 @@
             </form>
         </section>
 
-        <!-- Public Notice Board (Where approved entries show up) -->
+        <!-- Public Notice Board -->
         <section id="notice-board" style="padding: 30px; background: #161b22; border-radius: 8px; border: 1px solid #30363d; margin-top: 20px;">
             <h2>📌 Community Feed & Updates</h2>
             <div id="approved-feed-container">
                 <p style="color: #8b949e; font-style: italic;">No recent community posts available yet.</p>
-                <!-- Approved items will dynamically render here via Backend JS or manually -->
             </div>
         </section>
 
@@ -549,7 +582,6 @@
             <!-- ROW 1: Core Executives -->
             <h3 class="member-section-title">Executive Committee</h3>
             <div class="executive-grid">
-                <!-- President -->
                 <div class="member-card paid-member">
                     <span class="badge">PRESIDENT</span>
                     <img src="member1.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pradeep'">
@@ -558,7 +590,6 @@
                     <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
                 </div>
 
-                <!-- Secretary -->
                 <div class="member-card paid-member">
                     <span class="badge">SECRETARY</span>
                     <img src="member2.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Akash'">
@@ -571,7 +602,6 @@
             <!-- ROW 2 & Beyond: Other Paid/Premium Members -->
             <h3 class="member-section-title">Premium Members</h3>
             <div class="premium-grid">
-                <!-- Vice-President -->
                 <div class="member-card paid-member">
                     <span class="badge">PAID MEMBER</span>
                     <img src="member3.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Sumesh'">
@@ -580,7 +610,6 @@
                     <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
                 </div>   
                 
-                <!-- Joint-Secretary -->
                 <div class="member-card paid-member">
                     <span class="badge">PAID MEMBER</span>
                     <img src="member4.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Athul'">
@@ -589,7 +618,6 @@
                     <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
                 </div>
 
-                <!-- Convenor -->
                 <div class="member-card paid-member">
                     <span class="badge">PAID MEMBER</span>
                     <img src="member5.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Rajesh'">
@@ -598,7 +626,6 @@
                     <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
                 </div> 
 
-                <!-- Joint - Convenor -->
                 <div class="member-card paid-member">
                     <span class="badge">PAID MEMBER</span>
                     <img src="member6.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pramod'">
@@ -607,7 +634,6 @@
                     <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
                 </div> 
 
-                <!-- Program Coordinator -->
                 <div class="member-card paid-member">
                     <span class="badge">PAID MEMBER</span>
                     <img src="member7.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Anoop'">
@@ -624,210 +650,151 @@
             <p style="color: #8b949e;">The following members are part of the Mavila Yuvadhara active roster.</p>
             
             <div class="directory-grid">
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member8.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Bindil Kumar</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member9.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Akhil</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member  -->
                 <div class="directory-card">
                     <img src="member10.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Anandu</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member11.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Harikrishnan</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member12.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>KiranDas</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member13.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Shibo Usthad</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member14.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Vinod</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member15.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Akhil Raj</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member16.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Alwin</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member17.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Anandhu</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member18.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Aneesh J K</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member19.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Arun A</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member20.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>ArunM G</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member21.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Ashik Aji</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member22.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Bineesh</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member23.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Binu</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member24.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Dayasingh V</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member25.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Gowtham Soman</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member26.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Jayakrishnan</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member27.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Jayesh V</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member29.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Priyadarsh P B</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member31.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rahul</h4>
                     <p>Club Member</p>
                 </div>        
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member30.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rahul Raj</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member32.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rejith Kumar</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member33.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rejith</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member34.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Shajahan</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member35.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Sooraj</h4>
                     <p>Club Member</p>
                 </div>
-                
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member36.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Vipin</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member37.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Babu</h4>
                     <p>Club Member</p>
                 </div>
-
-                <!-- General Member -->
                 <div class="directory-card">
                     <img src="member38.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Manoj</h4>
@@ -841,11 +808,9 @@
             <h2>🌐 Connect With Us on Social Media</h2>
             <p style="color: #8b949e;">Follow our official pages to get live updates on our matches, arts programs, and festival celebrations.</p>
             <div class="social-links-container">
-                <!-- Instagram Button -->
                 <a href="https://www.instagram.com/mavila_yuvadhara?igsh=MTkzOGo2ejNvMHF6Ng%3D%3D&utm_source=qr" target="_blank" class="social-btn instagram-btn">
                     📸 Follow us on Instagram
                 </a>
-                <!-- Facebook Button -->
                 <a href="https://www.facebook.com/share/15asg7Cq8e/" target="_blank" class="social-btn facebook-btn">
                     👥 Like us on Facebook
                 </a>
