@@ -30,8 +30,7 @@
 
         /* Shifting Lightning Gradient Header */
         header {
-            text-align: center;
-            padding: 40px 20px;
+            padding: 40px 30px;
             background: linear-gradient(135deg, #1f1c2c, #4d466e, #1f1c2c);
             background-size: 400% 400%;
             animation: lightningShift 8s ease infinite;
@@ -45,27 +44,75 @@
             100% { background-position: 0% 50%; }
         }
 
-        header h1 {
+        /* Header Split Grid System (Left & Right Layout) */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-row-names {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Header Side Wrappers */
+        .header-left {
+            text-align: left;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .header-right {
+            text-align: right;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        /* Typography Configurations */
+        .header-left h1.malayalam-title-header {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 2.3em;
             margin: 0;
-            font-size: 2.8em;
+            color: #ffd700; /* Gold color */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            line-height: 1.3;
+        }
+
+        .header-right h1.english-title-header {
+            margin: 0;
+            font-size: 2.1em;
             font-weight: 800;
+            color: #ffffff;
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+            line-height: 1.3;
+        }
+
+        .malayalam-address {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 1.4em;
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .english-address {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05em;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Universal Malayalam typography wrapper class */
         .malayalam-text {
             font-family: 'Gayathri', 'Manjari', sans-serif;
             font-weight: 700;
-        }
-
-        /* Styling for the Malayalam text inside the header */
-        .malayalam-title-header {
-            font-family: 'Gayathri', 'Manjari', sans-serif;
-            font-size: 1.8em;
-            margin: 15px 0 0 0;
-            color: #ffd700; /* Gold color to make it shine against the banner */
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            line-height: 1.5;
         }
 
         /* Navigation */
@@ -90,7 +137,7 @@
         }
 
         main {
-            max-width: 1100px; /* Slightly wider to easily accommodate row layouts */
+            max-width: 1100px; 
             margin: 20px auto;
             padding: 0 20px;
         }
@@ -351,6 +398,14 @@
         .facebook-btn:hover {
             box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
         }
+
+        /* Mobile adaptation adjustments */
+        @media (max-width: 768px) {
+            .header-left, .header-right {
+                text-align: center !important;
+            }
+        }
+
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -362,13 +417,37 @@
 </head>
 <body>
 
+    <!-- Redesigned Dual-Language Header Layout System -->
     <header>
-        <h1>The Mavila Yuvadhara Arts & Sports Club</h1>
-        <h2 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്<br>
-       (രജിസ്റ്റർ നമ്പർ : Q  713/04 )<br>
-            കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
-        കൊല്ലം, കേരള<br>
-        പിൻ : 691301 </h2>
+        <!-- Top Section: Club Names (Left: Malayalam | Right: English) -->
+        <div class="header-row header-row-names">
+            <div class="header-left">
+                <h1 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്</h1>
+                <span style="color: rgba(255, 215, 0, 0.85); font-size: 13px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
+            </div>
+            <div class="header-right">
+                <h1 class="english-title-header">The Mavila Yuvadhara Arts & Sports Club</h1>
+                <span style="color: rgba(255, 255, 255, 0.6); font-size: 13px; font-family: 'Poppins', sans-serif; display:block; margin-top:5px;">Reg No: Q 713/04</span>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Addresses (Left: Malayalam | Right: English) -->
+        <div class="header-row">
+            <div class="header-left">
+                <p class="malayalam-address">
+                    കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
+                    കൊല്ലം, കേരള<br>
+                    പിൻ : 691301
+                </p>
+            </div>
+            <div class="header-right">
+                <p class="english-address">
+                    Kurumandal, Paravoor P.O.<br>
+                    Kollam, Kerala<br>
+                    PIN : 691301
+                </p>
+            </div>
+        </div>
     </header>
 
     <nav>
@@ -413,6 +492,51 @@
         <section id="events">
             <h2>Upcoming Events</h2>
             <p style="color: #8b949e;">Stay tuned for our next meeting! We meet every first Saturday and Sunday of each month at 6:00 PM.</p>
+        </section>
+
+        <!-- Community Submission Form Section -->
+        <section id="user-submissions-section" style="background-color: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 8px; margin: 30px 0;">
+            <h2>📢 Submit Items, Suggestions, or Complaints</h2>
+            <p style="color: #8b949e;">Have something to share or report? Submit it below. All submissions are reviewed by club administration before being published.</p>
+            
+            <form id="communityForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; text-align: left;">
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Your Name</label>
+                    <input type="text" id="userName" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Submission Type</label>
+                    <select id="submissionType" style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
+                        <option value="suggestion">💡 Suggestion</option>
+                        <option value="item">📦 Club Item / Art Resource</option>
+                        <option value="complaint">⚠️ Complaint / Feedback</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Message Content</label>
+                    <textarea id="userMessage" rows="4" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box; resize: vertical;"></textarea>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Upload Image (Optional)</label>
+                    <input type="file" id="userFile" accept="image/*" style="color: #8b949e;">
+                </div>
+
+                <button type="submit" style="background-color: #58a6ff; color: #000; padding: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; margin-top: 10px;">
+                    🚀 Submit for Approval
+                </button>
+            </form>
+        </section>
+
+        <!-- Public Notice Board (Where approved entries show up) -->
+        <section id="notice-board" style="padding: 30px; background: #161b22; border-radius: 8px; border: 1px solid #30363d; margin-top: 20px;">
+            <h2>📌 Community Feed & Updates</h2>
+            <div id="approved-feed-container">
+                <p style="color: #8b949e; font-style: italic;">No recent community posts available yet.</p>
+                <!-- Approved items will dynamically render here via Backend JS or manually -->
+            </div>
         </section>
 
         <hr style="border: 0; border-top: 1px solid #30363d; margin: 40px 0;">
@@ -746,7 +870,6 @@
             canvas.height = canvas.offsetHeight;
         }
 
-        // Optimized resize listener with basic throttling behavior via requestAnimationFrame
         window.addEventListener('resize', () => {
             cancelAnimationFrame(animationFrameId);
             resize();
