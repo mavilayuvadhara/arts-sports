@@ -131,3 +131,48 @@ main {
 .nav-btn:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
+/* Mobile Optimization */
+@media (max-width: 600px) {
+    .lightbox {
+        /* Changes layout from row to column so buttons sit under/above image */
+        flex-direction: column; 
+        justify-content: center;
+    }
+
+    .lightbox-content {
+        width: 95%; /* Use almost full width on mobile */
+        max-height: 60vh;
+    }
+
+    .lightbox-content img {
+        max-height: 55vh; /* Ensures image leaves plenty of vertical space for buttons */
+    }
+
+    /* Reposition buttons to look clean on touchscreens */
+    .nav-btn {
+        position: absolute;
+        bottom: 40px; /* Moves arrows to the bottom for easy thumb-tapping */
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .prev-btn {
+        left: 20%;
+    }
+
+    .next-btn {
+        right: 20%;
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 25px;
+        font-size: 35px;
+    }
+    
+    #lightbox-caption {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}
