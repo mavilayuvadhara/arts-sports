@@ -1,58 +1,219 @@
-Here is the full, integrated code that combines your layout with the new **smooth scrolling announcement ticker**.
-
-I have placed the scrolling text bar right at the top of the page so it is the first thing visitors notice when they open the website.
-
-```html
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuvadhara Mavila</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Welcome to Our Club - Mavila Yuvadhara Arts and Sports Club</title>
+    
+    <!-- Google Fonts Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&family=Inter:wght@300;400;600;700&family=Manjari:wght@400;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* Global Styles */
-        * {
+        /* Modern Dark Theme Base with Global Matrix Layering */
+        body {
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117; 
+            color: #c9d1d9;
+            line-height: 1.6;
         }
 
-        body {
-            background-color: #121212;
+        /* Full Background Matrix Canvas Wrapper */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        /* Content Wrappers tweaked with slight transparency & blur for maximum text readability */
+        header, nav, main, footer {
+            position: relative;
+            z-index: 2; 
+        }
+
+        /* Heading Styles Override */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Shifting Lightning Gradient Header */
+        header {
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(31, 28, 44, 0.93), rgba(77, 70, 110, 0.93), rgba(31, 28, 44, 0.93));
+            background-size: 400% 400%;
+            animation: lightningShift 8s ease infinite;
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            border-bottom: 2px solid #30363d;
+            backdrop-filter: blur(8px); 
         }
 
-        /* ------------------------------------------- */
-        /* Smooth Scrolling Announcement Bar Styles  */
-        /* ------------------------------------------- */
+        @keyframes lightningShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header Split Layout System */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-row-names {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Header Layout Units */
+        .header-left {
+            text-align: left;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .header-center {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1; 
+            min-width: 200px;
+            padding: 0 15px;
+        }
+
+        .header-right {
+            text-align: right;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        /* Logo Configuration (Transparent/White Blend) */
+        .header-logo {
+            max-width: 150px; /* Slightly increased to match larger texts */
+            height: auto;
+            background: transparent;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.3));
+        }
+
+        /* Nature Image Placement Styling */
+        .nature-banner-container {
+            max-width: 1100px;
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .nature-bg-banner {
+            width: 100%;
+            height: 220px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            display: block;
+        }
+
+        /* Typography Configurations (Increased font-sizes for better visibility) */
+        .header-left h1.malayalam-title-header {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 2.6em; /* Increased from 2.3em */
+            margin: 0;
+            color: #ffd700; 
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            line-height: 1.3;
+        }
+
+        .header-right h1.english-title-header {
+            margin: 0;
+            font-size: 2.3em; /* Increased from 2.1em */
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+            line-height: 1.3;
+        }
+
+        .malayalam-address {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 1.55em; /* Increased from 1.4em */
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .english-address {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15em; /* Increased from 1.05em */
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .malayalam-text {
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            text-align: center;
+            padding: 14px;
+            background-color: rgba(22, 27, 34, 0.9);
+            border-bottom: 1px solid #30363d;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            backdrop-filter: blur(6px);
+        }
+        nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            padding: 0 15px;
+            font-weight: 600;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        nav a:hover {
+            color: #58a6ff;
+            text-shadow: 0 0 8px #58a6ff;
+        }
+
+        /* Announcement Scrolling Text Ticker Styles */
         .scrolling-notice-container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             background: linear-gradient(90deg, #1f1c2c, #4d466e);
             border-top: 2px solid #ffd700;
             border-bottom: 2px solid #ffd700;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             padding: 12px 0;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            margin: 20px auto 0 auto;
             display: flex;
             align-items: center;
+            border-radius: 6px;
         }
 
         .notice-badge {
             background-color: #ffd700;
             color: #000000;
             padding: 6px 15px;
+            font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
             z-index: 10;
@@ -70,15 +231,14 @@ I have placed the scrolling text bar right at the top of the page so it is the f
         .marquee-text {
             display: inline-block;
             white-space: nowrap;
-            font-family: 'Gayathri', 'Manjari', 'AnjaliOldLipi', sans-serif;
-            font-size: 1.4rem;
+            font-family: 'Gayathri', 'Manjari', sans-serif;
+            font-size: 1.45rem;
             font-weight: bold;
             color: #ffffff;
-            padding-left: 100%; 
+            padding-left: 100%;
             animation: modernMarquee 25s linear infinite;
         }
 
-        /* Pauses the scrolling text when user hovers mouse over it */
         .marquee-track:hover .marquee-text {
             animation-play-state: paused;
             cursor: pointer;
@@ -89,178 +249,631 @@ I have placed the scrolling text bar right at the top of the page so it is the f
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* ------------------------------------------- */
-        /* Executive Committee Cards Styles            */
-        /* ------------------------------------------- */
-        h1 {
-            margin-bottom: 30px;
-            color: #ffd700;
-            text-align: center;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        main {
+            max-width: 1100px; 
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
+        /* Dashboard blocks styled with transparency and blur */
+        #welcome {
+            padding: 40px 30px;
+            background: rgba(22, 27, 34, 0.85);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-
-        .card {
-            background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.1);
-            border-color: #ffd700;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #ff8c00, #ffd700);
-        }
-
-        .profile-img-container {
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(135deg, #ff8c00, #ffd700);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            background-color: #333;
-        }
-
-        .name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .welcome-content h2 {
+            margin-top: 0;
+            font-size: 2em;
             color: #ffffff;
+        }
+
+        .join-us-section, #events, #user-submissions-section, #notice-board, #paid-members {
+            background-color: rgba(22, 27, 34, 0.88) !important;
+            border: 1px solid #30363d;
+            backdrop-filter: blur(6px);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .join-us-section {
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 0 15px rgba(46, 164, 79, 0.1);
+        }
+         
+        .register-btn {
+            display: inline-block;
+            background-color: #2ea44f;
+            color: white;
+            padding: 14px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 15px;
+            animation: electricGreenPulse 2s infinite alternate;
+            transition: transform 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .register-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes electricGreenPulse {
+            0% { box-shadow: 0 0 5px rgba(46, 164, 79, 0.4), inset 0 0 5px rgba(46, 164, 79, 0.2); }
+            100% { box-shadow: 0 0 22px rgba(46, 164, 79, 0.85), inset 0 0 10px rgba(46, 164, 79, 0.4); }
+        }
+
+        #events {
+            padding: 30px;
+            margin-top: 20px;
+        }
+        #events h2 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        /* Subheadings for Member groups */
+        .member-section-title {
+            color: #ffffff;
+            font-size: 1.4em;
+            margin: 40px 0 20px 0;
+            border-left: 4px solid #ffd700;
+            padding-left: 12px;
+        }
+
+        /* Members Layout Grids */
+        .member-card {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(13, 17, 23, 0.85);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .member-card h3 {
+            margin: 10px 0 5px 0;
+            font-size: 1.2em;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+         
+        /* Gold Neon Animated Glow for Premium Cards */
+        .paid-member {
+            border: 1px solid #ffd700;
+            background: linear-gradient(145deg, rgba(28, 31, 38, 0.9), rgba(22, 27, 34, 0.9));
+            animation: goldElectricGlow 4s infinite alternate;
+        }
+        @keyframes goldElectricGlow {
+            0% { box-shadow: 0 0 4px rgba(255, 215, 0, 0.15); }
+            100% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.45); }
+        }
+        .badge {
+            background-color: #ffd700;
+            color: #000;
+            padding: 4px 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+            box-shadow: 0 0 6px #ffd700;
             letter-spacing: 0.5px;
         }
 
-        .role {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            color: #ffd700;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        /* ROW 1: Executive Grid Style */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .executive-grid .member-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 2px solid #ffd700;
         }
 
-        .social-icons {
+        /* ROW 2 & BEYOND: Smaller Paid Members Grid */
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .premium-grid .member-card {
+            padding: 15px;
+        }
+        .premium-grid .member-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #30363d;
+        }
+        .premium-grid .member-card h3 {
+            font-size: 1.1em;
+            margin: 8px 0 4px 0;
+        }
+        .premium-grid .member-card p {
+            font-size: 12px !important;
+        }
+
+        /* Directory Grid */
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .directory-card {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            background: rgba(13, 17, 23, 0.9); 
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .directory-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        .directory-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 8px;
+            border: 1px solid #30363d;
+            filter: grayscale(40%); 
+        }
+
+        .directory-card h4 {
+            margin: 5px 0;
+            font-size: 0.95em;
+            color: #c9d1d9;
+            font-weight: 600;
+        }
+
+        .directory-card p {
+            font-size: 11px;
+            color: #8b949e;
+            margin: 0;
+        }
+
+        /* Social Media Section Styles */
+        .social-connect-section {
+            background-color: rgba(22, 27, 34, 0.88);
+            border: 1px solid #30363d;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 50px 0 20px 0;
+            backdrop-filter: blur(6px);
+        }
+        .social-links-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #ffffff;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 0 10px rgba(220, 39, 67, 0.2);
+        }
+        .instagram-btn:hover {
+            box-shadow: 0 0 20px rgba(220, 39, 67, 0.6);
+        }
+        .facebook-btn {
+            background-color: #1877f2;
+            box-shadow: 0 0 10px rgba(24, 119, 242, 0.2);
+        }
+        .facebook-btn:hover {
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
         }
 
-        .social-icons a {
-            color: #a0a0a0;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+        /* Dynamic Input Enhancements */
+        #communityForm input, 
+        #communityForm select, 
+        #communityForm textarea {
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        #communityForm input:focus, 
+        #communityForm select:focus, 
+        #communityForm textarea:focus {
+            border-color: #58a6ff !important;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
         }
 
-        .social-icons a:hover {
-            color: #ffd700;
-            transform: scale(1.2);
-        }
-
-        /* Responsive Tweaks */
+        /* Mobile adaptation adjustments */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .marquee-text { font-size: 1.2rem; }
+            .header-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-left, .header-right {
+                text-align: center !important;
+            }
+            .header-center {
+                margin: 15px 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .header-left h1.malayalam-title-header {
+                font-size: 2.1em;
+            }
+            .header-right h1.english-title-header {
+                font-size: 1.9em;
+            }
+            .marquee-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 14px;
+            background-color: rgba(13, 17, 23, 0.9);
+            backdrop-filter: blur(6px);
         }
     </style>
 </head>
 <body>
 
+    <!-- Global Background Animation Canvas Component -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Header System Area -->
+    <header>
+        <div class="header-row header-row-names">
+            <div class="header-left">
+                <h1 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്</h1>
+                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
+            </div>
+            <div class="header-right">
+                <h1 class="english-title-header">The Mavila Yuvadhara Arts & Sports Club</h1>
+                <span style="color: rgba(255, 255, 255, 0.6); font-size: 14px; font-family: 'Poppins', sans-serif; display:block; margin-top:5px;">Reg No: Q 713/04</span>
+            </div>
+        </div>
+
+        <div class="header-row" style="align-items: center;">
+            <div class="header-left">
+                <p class="malayalam-address">
+                    കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
+                    കൊല്ലം, കേരള<br>
+                    പിൻ : 691301
+                </p>
+            </div>
+            
+            <div class="header-center">
+                <img src="logo.png" alt="Yuvadhara Club Logo" class="header-logo" onerror="this.style.display='none'">
+            </div>
+
+            <div class="header-right">
+                <p class="english-address">
+                    Kurumandal, Paravoor P.O.<br>
+                    Kollam, Kerala<br>
+                    PIN : 691301
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="about.html">About Us</a> | 
+        <a href="#join-us">Join Us</a> | 
+        <a href="gallery.html">Gallery</a> | 
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    
+    <!-- Smooth Scrolling Announcement Text Ticker Box -->
     <div class="scrolling-notice-container">
-        <div class="notice-badge">📢 ALERT</div>
+        <div class="notice-badge">📢 CAMP NOTICE</div>
         <div class="marquee-track">
             <div class="marquee-text">
-                മാവിള യുവധാരയും ഡോക്ടർ അഗർവാൾ കണ്ണാശുപത്രിയും സംയുക്തമായി നടത്തുന്ന നേത്ര പരിശോധന ക്യാമ്പ് 2026 ജൂലൈ 12 ഞായറാഴ്ച രാവിലെ 10 മണിമുതൽ ക്ലബ്ബിൽ വച്ച് നടക്കുന്നു.
+                മാവിള യുവധാരയും ഡോക്ടർ അഗർവാൾ കണ്ണാשുപത്രിയും സംയുക്തമായി നടത്തുന്ന നേത്ര പരിശോധന ക്യാമ്പ് 2026 ജൂലൈ 12 ഞായറാഴ്ച രാവിലെ 10 മണിമുതൽ ക്ലബ്ബിൽ വച്ച് നടക്കുന്നു.
             </div>
         </div>
     </div>
+    
+    <!-- Mid-Page Welcome Title -->
+    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(0,0,0,0.8); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px; margin-bottom: 15px;" class="malayalam-text">
+        മാവിള യുവധാര പോർട്ടൽ <br>
+        <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
+    </h1>
 
-    <h1>Executive Committee</h1>
-
-    <div class="container">
-        
-        <div class="card">
-            <div class="profile-img-container">
-                <img src="https://via.placeholder.com/150" alt="President Profile" class="profile-img">
-            </div>
-            <div class="name">John Doe</div>
-            <div class="role">President</div>
-            <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="profile-img-container">
-                <img src="https://via.placeholder.com/150" alt="Secretary Profile" class="profile-img">
-            </div>
-            <div class="name">Jane Smith</div>
-            <div class="role">Secretary</div>
-            <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="profile-img-container">
-                <img src="https://via.placeholder.com/150" alt="Treasurer Profile" class="profile-img">
-            </div>
-            <div class="name">Alex Johnson</div>
-            <div class="role">Treasurer</div>
-            <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
+    <!-- Nature Image Banner Placement -->
+    <div class="nature-banner-container">
+        <img src="nature.jpg" alt="Nature Banner View" class="nature-bg-banner" onerror="this.src='https://via.placeholder.com/1100x220/161b22/30363d?text=Mavila+Yuvadhara+Arts+%26+Sports+Club'">
     </div>
+
+    <main>
+        <!-- Welcome Section -->
+        <section id="welcome">
+            <div class="welcome-content">
+                <h2>Welcome to Our Community</h2>
+                <p>This club was founded to bring people together through the power of arts and sports. Explore our site to see what we are all about!</p>
+            </div>
+        </section>
+
+        <!-- Join Us / Registration Section -->
+        <section id="join-us" class="join-us-section">
+            <h2>🤝 Join Us & Become a Member!</h2>
+            <p style="color: #8b949e;">New member registrations are officially open. Be a part of our vibrant journey in arts and sports!</p>
+            <a href="https://forms.gle/SemVmMphrnuEmUTe6" target="_blank" class="register-btn">
+                ⚡ REGISTER HERE (Google Form)
+            </a>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            <p style="color: #8b949e;">Stay tuned for our next meeting! We meet every first Saturday and Sunday of each month at 6:00 PM.</p>
+        </section>
+
+        <!-- Community Submission Form Section -->
+        <section id="user-submissions-section" style="padding: 30px; margin: 30px 0;">
+            <h2>📢 Submit Items, Suggestions, or Complaints</h2>
+            <p style="color: #8b949e;">Have something to share or report? Submit it below. All submissions are reviewed by club administration before being published.</p>
+            
+            <form id="communityForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; text-align: left;">
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Your Name</label>
+                    <input type="text" id="userName" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Submission Type</label>
+                    <select id="submissionType" style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
+                        <option value="suggestion">💡 Suggestion</option>
+                        <option value="item">📦 Club Item / Art Resource</option>
+                        <option value="complaint">⚠️ Complaint / Feedback</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Message Content</label>
+                    <textarea id="userMessage" rows="4" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box; resize: vertical;"></textarea>
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Upload Image (Optional)</label>
+                    <input type="file" id="userFile" accept="image/*" style="color: #8b949e;">
+                </div>
+
+                <button type="submit" style="background-color: #58a6ff; color: #000; padding: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; margin-top: 10px;">
+                    🚀 Submit for Approval
+                </button>
+            </form>
+        </section>
+
+        <!-- Public Notice Board -->
+        <section id="notice-board" style="padding: 30px; margin-top: 20px;">
+            <h2>📌 Community Feed & Updates</h2>
+            <div id="approved-feed-container">
+                <p style="color: #8b949e; font-style: italic;">No recent community posts available yet.</p>
+            </div>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid #30363d; margin: 40px 0;">
+
+        <!-- Paid Members Section -->
+        <section id="paid-members" style="padding: 30px;">
+            <h2>🏅 Our Premium & Paid Members</h2>
+            <p style="color: #8b949e;">Special thanks to our registered premium members for their core support.</p>
+            
+            <!-- ROW 1: Core Executives -->
+            <h3 class="member-section-title">Executive Committee</h3>
+            <div class="executive-grid">
+                <div class="member-card paid-member">
+                    <span class="badge">PRESIDENT</span>
+                    <img src="member1.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pradeep'">
+                    <h3>Pradeep P G</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>President</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+
+                <div class="member-card paid-member">
+                    <span class="badge">SECRETARY</span>
+                    <img src="member2.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Akash'">
+                    <h3>Akash A</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Secretary</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+            </div>
+
+            <!-- ROW 2 & Beyond -->
+            <h3 class="member-section-title">Premium Members</h3>
+            <div class="premium-grid">
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member3.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Sumesh'">
+                    <h3>Sumesh S P</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Vice-President</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>   
+                
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member4.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Athul'">
+                    <h3>Athul Ajay</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Joint-Secretary</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div>
+
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member5.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Rajesh'">
+                    <h3>Rajesh R</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Convenor</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member6.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Pramod'">
+                    <h3>Pramod S</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Joint-Convenor</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+
+                <div class="member-card paid-member">
+                    <span class="badge">PAID MEMBER</span>
+                    <img src="member7.jpg" alt="Member Photo" onerror="this.src='https://via.placeholder.com/110/222/fff?text=Anoop'">
+                    <h3>Anoop J K</h3>
+                    <p style="color: #58a6ff; margin: 5px 0;"><strong>Program Coordinator</strong></p>
+                    <p style="font-size: 13px; color:#8b949e;">Executive Member</p>
+                </div> 
+            </div>
+        </section>
+
+        <!-- General Members Section -->
+        <section id="general-members" style="margin-top: 50px;">
+            <h2>👥 General Members Directory</h2>
+            <p style="color: #8b949e;">The following members are part of the Mavila Yuvadhara active roster.</p>
+            
+            <div class="directory-grid">
+                <div class="directory-card">
+                    <img src="member8.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Bindil Kumar</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member9.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Akhil</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member10.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Anandu</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member11.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Harikrishnan</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member12.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>KiranDas</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member13.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Shibo Usthad</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member14.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Vinod</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member15.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Akhil Raj</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member16.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Alwin</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member17.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Anandhu</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member18.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Aneesh J K</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member19.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Arun A</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member20.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>ArunM G</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member21.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Ashik Aji</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member22.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Bineesh</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member23.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Binu</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member24.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Dayasingh V</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member25.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Gowtham Soman</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member26.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Jayakrishnan</h4>
+                    <p>Club Member</p>
+                </div>
+                <div class="directory-card">
+                    <img src="member27.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Jayesh V</h4>
+                    <p>Club Member</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Mavila Yuvadhara Arts & Sports Club. All Rights Reserved.
+    </footer>
 
 </body>
 </html>
-
-```
