@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +8,9 @@
     <!-- Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;700&family=Inter:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gayathri:wght@400;700&family=Inter:wght@300;400;600;700&family=Manjari:wght@400;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Malayalam font support */
-        .malayalam-title-header, .malayalam-address, .malayalam-text, .marquee-text, [lang='ml'] {
-            font-family: 'Noto Sans Malayalam', 'Gayathri', 'Manjari', sans-serif;
-            font-weight: 500;
-            line-height: 1.7;
-        }
-
         /* Modern Dark Theme Base with Global Matrix Layering */
         body {
             font-family: 'Inter', sans-serif;
@@ -419,14 +412,12 @@
         /* Directory Grid */
         .directory-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
 
         .directory-card {
-            min-width: 0;
-            box-sizing: border-box;
             border: 1px solid #30363d;
             border-radius: 8px;
             padding: 12px;
@@ -462,9 +453,6 @@
             color: #8b949e;
             margin: 0;
         }
-
-        @media (max-width: 900px) { .directory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-        @media (max-width: 600px) { .directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .directory-card { padding: 10px 6px; } }
 
         /* Social Media Section Styles */
         .social-connect-section {
@@ -561,107 +549,6 @@
             background-color: rgba(13, 17, 23, 0.9);
             backdrop-filter: blur(6px);
         }
-
-        /* Welcome photo book */
-        .welcome-book-section {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 30px 20px;
-            box-sizing: border-box;
-            background: rgba(22, 27, 34, 0.88);
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,.3);
-        }
-        .welcome-book-section .welcome-content h2 {
-            margin: 0 0 20px;
-            text-align: center;
-            color: #fff;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-        }
-        .photo-book-wrap { max-width: 760px; margin: 0 auto; }
-        .photo-book {
-            position: relative;
-            width: 100%;
-            height: clamp(320px, 62vw, 540px);
-            perspective: 1800px;
-            background: #090c10;
-            border: 1px solid #39414b;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,.45);
-        }
-        .book-page {
-            position: absolute;
-            inset: 0;
-            background: #111820;
-            transform-origin: left center;
-            backface-visibility: hidden;
-            transition: transform .65s ease, opacity .45s ease;
-            overflow: hidden;
-            opacity: 0;
-            transform: rotateY(-12deg) scale(.985);
-            pointer-events: none;
-        }
-        .book-page.active {
-            opacity: 1;
-            transform: rotateY(0) scale(1);
-            z-index: 2;
-            pointer-events: auto;
-        }
-        .book-page.turning-away {
-            opacity: 0;
-            transform: rotateY(-90deg);
-        }
-        .book-page img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #090c10;
-        }
-        .book-page .missing-image[hidden] { display: none; }
-        .book-page .missing-image {
-            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-            box-sizing: border-box; padding: 24px; text-align: center; color: #c9d1d9;
-            background: linear-gradient(135deg, #161b22, #252b36); font-family: 'Inter', sans-serif;
-        }
-        .page-number {
-            position: absolute;
-            right: 12px;
-            bottom: 10px;
-            padding: 4px 9px;
-            border-radius: 14px;
-            background: rgba(0,0,0,.7);
-            color: #fff;
-            font: 12px 'Inter', sans-serif;
-        }
-        .book-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .book-controls button {
-            border: 1px solid #58a6ff;
-            background: #172b40;
-            color: #fff;
-            border-radius: 6px;
-            padding: 10px 16px;
-            font: 600 14px 'Inter', sans-serif;
-            cursor: pointer;
-        }
-        .book-controls button:hover { background: #23496b; }
-        .book-controls button:disabled { opacity: .4; cursor: not-allowed; }
-        #bookPageStatus { color: #c9d1d9; font-size: 14px; text-align: center; }
-        .book-hint { margin: 9px 0 0; text-align: center; color: #8b949e; font-size: 12px; }
-        @media (max-width: 520px) {
-            .welcome-book-section { padding: 20px 12px; }
-            .photo-book { height: 115vw; max-height: 520px; min-height: 300px; }
-            .book-controls button { padding: 9px 10px; font-size: 12px; }
-        }
-
     </style>
 </head>
 <body>
@@ -673,8 +560,8 @@
     <header>
         <div class="header-row header-row-names">
             <div class="header-left">
-                <h1 class="malayalam-title-header">????? ?????? ??? ????? ?????</h1>
-                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(??????????? ????? : Q 713/04)</span>
+                <h1 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്</h1>
+                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
             </div>
             <div class="header-right">
                 <h1 class="english-title-header">The Mavila Yuvadhara Arts & Sports Club</h1>
@@ -685,9 +572,9 @@
         <div class="header-row" style="align-items: center;">
             <div class="header-left">
                 <p class="malayalam-address">
-                    ?????????, ????? ??.?.<br>
-                    ??????, ?????<br>
-                    ??? : 691301
+                    കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
+                    കൊല്ലം, കേരള<br>
+                    പിൻ : 691301
                 </p>
             </div>
             
@@ -715,17 +602,17 @@
     
     <!-- Smooth Scrolling Announcement Text Ticker Box -->
     <div class="scrolling-notice-container">
-        <div class="notice-badge">?? CLUB NOTICE</div>
+        <div class="notice-badge">📢 CLUB NOTICE</div>
         <div class="marquee-track">
             <div class="marquee-text">
-                  ????? ?????? ??? ????? ????????????? ??????? • ????? ???????? ???????? ????????? • ??????? ????????? ??????? ???????
+                  മാവിള യുവധാരയുടെ ആസ്ഥാന നിർമാണ ഫണ്ട് ശേഖരണം ...... എല്ലാവരുടെയും സഹകരണം അഭ്യർത്ഥിക്കുന്നു .... ചെറുതും വലുതുമായ സംഭാവനകൾ സ്വീകാര്യം .... .
             </div>
         </div>
     </div>
     
     <!-- Mid-Page Welcome Title -->
-    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(0,0,0,0.8); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px; margin-bottom: 15px;" class="malayalam-text" lang="ml">
-        ??????? ????????????????? ??????? <br>
+    <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(0,0,0,0.8); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px; margin-bottom: 15px;" class="malayalam-text">
+        മാവിള യുവധാര പോർട്ടൽ <br>
         <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
     </h1>
 
@@ -735,62 +622,20 @@
     </div>
 
     <main>
-        <!-- Welcome section with 8-page photo book -->
-        <section id="welcome" class="welcome-book-section">
+        <!-- Welcome Section -->
+        <section id="welcome">
             <div class="welcome-content">
                 <h2>Welcome to Our Community</h2>
-            </div>
-
-            <div class="photo-book-wrap" aria-label="Club photo book">
-                <div class="photo-book" id="photoBook">
-                    <div class="book-page" data-page="0">
-                        <img src="page1.jpg" alt="Club photo book page 1" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 1 not found.<br>Please put <strong>page1.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">1 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="1">
-                        <img src="page2.jpg" alt="Club photo book page 2" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 2 not found.<br>Please put <strong>page2.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">2 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="2">
-                        <img src="page3.jpg" alt="Club photo book page 3" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 3 not found.<br>Please put <strong>page3.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">3 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="3">
-                        <img src="page4.jpg" alt="Club photo book page 4" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 4 not found.<br>Please put <strong>page4.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">4 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="4">
-                        <img src="page5.jpg" alt="Club photo book page 5" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 5 not found.<br>Please put <strong>page5.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">5 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="5">
-                        <img src="page6.jpg" alt="Club photo book page 6" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 6 not found.<br>Please put <strong>page6.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">6 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="6">
-                        <img src="page7.jpg" alt="Club photo book page 7" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 7 not found.<br>Please put <strong>page7.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">7 / 8</span>
-                    </div>
-                    <div class="book-page" data-page="7">
-                        <img src="page8.jpg" alt="Club photo book page 8" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="missing-image" hidden>Photo 8 not found.<br>Please put <strong>page8.jpg</strong> in the same folder as this HTML file.</div>
-                        <span class="page-number">8 / 8</span>
-                    </div>
-                </div>
-                <div class="book-controls">
-                    <button type="button" id="prevPage" aria-label="Previous page">‹ Previous</button>
-                    <span id="bookPageStatus" aria-live="polite">Page 1 of 8</span>
-                    <button type="button" id="nextPage" aria-label="Next page">Next ›</button>
-                </div>
-                <p class="book-hint">Use the buttons or tap the page edges to turn pages.</p>
+                <p>This club was founded to bring people together through the power of arts and sports. Explore our site to see what we are all about!</p>
             </div>
         </section>
 
         <!-- Join Us / Registration Section -->
         <section id="join-us" class="join-us-section">
-            <h2>?? Join Us & Become a Member!</h2>
+            <h2>🤝 Join Us & Become a Member!</h2>
             <p style="color: #8b949e;">New member registrations are officially open. Be a part of our vibrant journey in arts and sports!</p>
             <a href="https://forms.gle/SemVmMphrnuEmUTe6" target="_blank" class="register-btn">
-                ? REGISTER HERE (Google Form)
+                ⚡ REGISTER HERE (Google Form)
             </a>
         </section>
 
@@ -802,7 +647,7 @@
 
         <!-- Community Submission Form Section -->
         <section id="user-submissions-section" style="padding: 30px; margin: 30px 0;">
-            <h2>?? Submit Items, Suggestions, or Complaints</h2>
+            <h2>📢 Submit Items, Suggestions, or Complaints</h2>
             <p style="color: #8b949e;">Have something to share or report? Submit it below. All submissions are reviewed by club administration before being published.</p>
             
             <form id="communityForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; text-align: left;">
@@ -814,9 +659,9 @@
                 <div>
                     <label style="display: block; margin-bottom: 5px; font-weight: 600;">Submission Type</label>
                     <select id="submissionType" style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
-                        <option value="suggestion">?? Suggestion</option>
-                        <option value="item">?? Club Item / Art Resource</option>
-                        <option value="complaint">?? Complaint / Feedback</option>
+                        <option value="suggestion">💡 Suggestion</option>
+                        <option value="item">📦 Club Item / Art Resource</option>
+                        <option value="complaint">⚠️ Complaint / Feedback</option>
                     </select>
                 </div>
 
@@ -831,14 +676,14 @@
                 </div>
 
                 <button type="submit" style="background-color: #58a6ff; color: #000; padding: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; margin-top: 10px;">
-                    ?? Submit for Approval
+                    🚀 Submit for Approval
                 </button>
             </form>
         </section>
 
         <!-- Public Notice Board -->
         <section id="notice-board" style="padding: 30px; margin-top: 20px;">
-            <h2>?? Community Feed & Updates</h2>
+            <h2>📌 Community Feed & Updates</h2>
             <div id="approved-feed-container">
                 <p style="color: #8b949e; font-style: italic;">No recent community posts available yet.</p>
             </div>
@@ -848,7 +693,7 @@
 
         <!-- Paid Members Section -->
         <section id="paid-members" style="padding: 30px;">
-            <h2>?? Our Premium & Paid Members</h2>
+            <h2>🏅 Our Premium & Paid Members</h2>
             <p style="color: #8b949e;">Special thanks to our registered premium members for their core support.</p>
             
             <!-- ROW 1: Core Executives -->
@@ -918,224 +763,160 @@
 
         <!-- General Members Section -->
         <section id="general-members" style="margin-top: 50px;">
-            <h2 lang="en">General Members Directory</h2>
+            <h2>👥 General Members Directory</h2>
             <p style="color: #8b949e;">The following members are part of the Mavila Yuvadhara active roster.</p>
+            
             <div class="directory-grid">
                 <div class="directory-card">
-                    <img src="member1.jpg" alt="Pradeep P G" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Pradeep P G';">
-                    <h4>Pradeep P G</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member3.jpg" alt="Sumesh S P" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Sumesh S P';">
-                    <h4>Sumesh S P</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member2.jpg" alt="Akash A" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Akash A';">
-                    <h4>Akash A</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member8.jpg" alt="Bindil Kumar" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Bindil Kumar';">
+                    <img src="member8.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Bindil Kumar</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member9.jpg" alt="Akhil" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Akhil';">
+                    <img src="member9.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Akhil</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member10.jpg" alt="Anandu" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Anandu';">
+                    <img src="member10.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Anandu</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member11.jpg" alt="Harikrishnan" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Harikrishnan';">
+                    <img src="member11.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Harikrishnan</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member12.jpg" alt="KiranDas" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: KiranDas';">
-                    <h4>KiranDas</h4>
+                    <img src="member1.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Pradeep P G</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member13.jpg" alt="Shibo Usthad" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Shibo Usthad';">
+                    <img src="member13.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Shibo Usthad</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member14.jpg" alt="Vinod" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Vinod';">
+                    <img src="member14.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Vinod</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member15.jpg" alt="Akhil Raj" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Akhil Raj';">
+                    <img src="member15.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Akhil Raj</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member16.jpg" alt="Alwin" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Alwin';">
+                    <img src="member16.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Alwin</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member17.jpg" alt="Anandhu" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Anandhu';">
+                    <img src="member17.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Anandhu</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member18.jpg" alt="Aneesh J K" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Aneesh J K';">
+                    <img src="member18.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Aneesh J K</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member19.jpg" alt="Arun A" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Arun A';">
+                    <img src="member19.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Arun A</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member20.jpg" alt="ArunM G" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: ArunM G';">
+                    <img src="member20.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>ArunM G</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member21.jpg" alt="Ashik Aji" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Ashik Aji';">
+                    <img src="member21.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Ashik Aji</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member22.jpg" alt="Bineesh" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Bineesh';">
+                    <img src="member22.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Bineesh</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member23.jpg" alt="Binu" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Binu';">
+                    <img src="member23.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Binu</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member24.jpg" alt="Dayasingh V" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Dayasingh V';">
+                    <img src="member24.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Dayasingh V</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member25.jpg" alt="Gowtham Soman" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Gowtham Soman';">
+                    <img src="member25.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Gowtham Soman</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member26.jpg" alt="Jayakrishnan" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Jayakrishnan';">
+                    <img src="member26.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Jayakrishnan</h4>
                     <p>Club Member</p>
                 </div>
                 <div class="directory-card">
-                    <img src="member27.jpg" alt="Jayesh V" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Jayesh V';">
+                    <img src="member27.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Jayesh V</h4>
                     <p>Club Member</p>
                 </div>
-                <div class="directory-card">
-                    <img src="member29.jpg" alt="Priyadarsh P B" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Priyadarsh P B';">
+                 <div class="directory-card">
+                    <img src="member29.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Priyadarsh P B</h4>
                     <p>Club Member</p>
-                </div>
+            </div>
                 <div class="directory-card">
-                    <img src="member30.jpg" alt="Rahul raj R" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Rahul raj R';">
-                    <h4>Rahul raj R</h4>
+                    <img src="member3.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
+                    <h4>Sumesh S P</h4>
                     <p>Club Member</p>
-                </div>
+                     </div>
                 <div class="directory-card">
-                    <img src="member31.jpg" alt="Rahul S R" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Rahul S R';">
+                    <img src="member31.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rahul S R</h4>
                     <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member32.jpg" alt="Rajith kumar S" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Rajith kumar S';">
-                    <h4>Rajith kumar S</h4>
-                    <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member33.jpg" alt="Rejith" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Rejith';">
+                          </div>
+                                                        <div class="directory-card">
+                    <img src="member33.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rejith</h4>
                     <p>Club Member</p>
-                </div>
+                       </div>
                 <div class="directory-card">
-                    <img src="member34.jpg" alt="Shajahan J" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Shajahan J';">
+                    <img src="member34.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Shajahan J</h4>
                     <p>Club Member</p>
-                </div>
+                     </div>
                 <div class="directory-card">
-                    <img src="member35.jpg" alt="Sooraj T J" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Sooraj T J';">
+                    <img src="member35.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Sooraj T J</h4>
                     <p>Club Member</p>
-                </div>
+                      </div>
                 <div class="directory-card">
-                    <img src="member36.jpg" alt="Vipin Nath G" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Vipin Nath G';">
+                    <img src="member36.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Vipin Nath G</h4>
                     <p>Club Member</p>
-                </div>
+                     </div>
                 <div class="directory-card">
-                    <img src="member37.jpg" alt="Babu" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Babu';">
+                    <img src="member37.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Babu</h4>
                     <p>Club Member</p>
-                </div>
-                <div class="directory-card">
-                    <img src="member39.jpg" alt="Rahul Chandran" loading="lazy" onerror="this.style.opacity='.25'; this.alt='Photo unavailable: Rahul Chandran';">
+                     </div>
+                         <div class="directory-card">
+                    <img src="member39.jpg" alt="Member" onerror="this.src='https://via.placeholder.com/60/161b22/8b949e?text=Member'">
                     <h4>Rahul Chandran</h4>
                     <p>Club Member</p>
-                </div>
-            </div>
         </section>
     </main>
 
     <footer>
         &copy; 2026 Mavila Yuvadhara Arts & Sports Club. All Rights Reserved.
     </footer>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const book = document.getElementById('photoBook');
-    if (!book) return;
-    const pages = Array.from(book.querySelectorAll('.book-page'));
-    const previous = document.getElementById('prevPage');
-    const next = document.getElementById('nextPage');
-    const status = document.getElementById('bookPageStatus');
-    let current = 0;
-
-    function showPage(index, direction) {
-        if (index < 0 || index >= pages.length || index === current) return;
-        const oldPage = pages[current];
-        oldPage.classList.remove('active');
-        if (direction === 'next') oldPage.classList.add('turning-away');
-        window.setTimeout(() => oldPage.classList.remove('turning-away'), 650);
-        current = index;
-        pages.forEach((page, i) => {
-            page.classList.toggle('active', i === current);
-            page.setAttribute('aria-hidden', i === current ? 'false' : 'true');
-        });
-        status.textContent = 'Page ' + (current + 1) + ' of ' + pages.length;
-        previous.disabled = current === 0;
-        next.disabled = current === pages.length - 1;
-    }
-    pages.forEach((page, i) => {
-        page.classList.toggle('active', i === 0);
-        page.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
-    });
-    previous.addEventListener('click', () => showPage(current - 1, 'previous'));
-    next.addEventListener('click', () => showPage(current + 1, 'next'));
-    book.addEventListener('click', function (event) {
-        const rect = book.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        if (x > rect.width * 0.65) showPage(current + 1, 'next');
-        else if (x < rect.width * 0.35) showPage(current - 1, 'previous');
-    });
-    previous.disabled = true;
-    next.disabled = pages.length <= 1;
-});
-</script>
 
 </body>
 </html>
