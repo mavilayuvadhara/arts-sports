@@ -549,6 +549,101 @@
             background-color: rgba(13, 17, 23, 0.9);
             backdrop-filter: blur(6px);
         }
+
+        /* Welcome photo book */
+        .welcome-book-section {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            background: rgba(22, 27, 34, 0.88);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.3);
+        }
+        .welcome-book-section .welcome-content h2 {
+            margin: 0 0 20px;
+            text-align: center;
+            color: #fff;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+        .photo-book-wrap { max-width: 760px; margin: 0 auto; }
+        .photo-book {
+            position: relative;
+            width: 100%;
+            height: clamp(320px, 62vw, 540px);
+            perspective: 1800px;
+            background: #090c10;
+            border: 1px solid #39414b;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,.45);
+        }
+        .book-page {
+            position: absolute;
+            inset: 0;
+            background: #111820;
+            transform-origin: left center;
+            backface-visibility: hidden;
+            transition: transform .65s ease, opacity .45s ease;
+            overflow: hidden;
+            opacity: 0;
+            transform: rotateY(-12deg) scale(.985);
+            pointer-events: none;
+        }
+        .book-page.active {
+            opacity: 1;
+            transform: rotateY(0) scale(1);
+            z-index: 2;
+            pointer-events: auto;
+        }
+        .book-page.turning-away {
+            opacity: 0;
+            transform: rotateY(-90deg);
+        }
+        .book-page img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #090c10;
+        }
+        .page-number {
+            position: absolute;
+            right: 12px;
+            bottom: 10px;
+            padding: 4px 9px;
+            border-radius: 14px;
+            background: rgba(0,0,0,.7);
+            color: #fff;
+            font: 12px 'Inter', sans-serif;
+        }
+        .book-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .book-controls button {
+            border: 1px solid #58a6ff;
+            background: #172b40;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px 16px;
+            font: 600 14px 'Inter', sans-serif;
+            cursor: pointer;
+        }
+        .book-controls button:hover { background: #23496b; }
+        .book-controls button:disabled { opacity: .4; cursor: not-allowed; }
+        #bookPageStatus { color: #c9d1d9; font-size: 14px; text-align: center; }
+        .book-hint { margin: 9px 0 0; text-align: center; color: #8b949e; font-size: 12px; }
+        @media (max-width: 520px) {
+            .welcome-book-section { padding: 20px 12px; }
+            .photo-book { height: 115vw; max-height: 520px; min-height: 300px; }
+            .book-controls button { padding: 9px 10px; font-size: 12px; }
+        }
+
     </style>
 </head>
 <body>
@@ -560,8 +655,8 @@
     <header>
         <div class="header-row header-row-names">
             <div class="header-left">
-                <h1 class="malayalam-title-header">മാവിള യുവധാര ആർട്സ് & സ്പോർട്സ് ക്ലബ്</h1>
-                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(രജിസ്റ്റർ നമ്പർ : Q 713/04)</span>
+                <h1 class="malayalam-title-header">????? ?????? ?????? & ????????? ?????</h1>
+                <span style="color: rgba(255, 215, 0, 0.85); font-size: 14px; font-weight: bold; font-family: sans-serif; display:block; margin-top:5px;">(????????? ????? : Q 713/04)</span>
             </div>
             <div class="header-right">
                 <h1 class="english-title-header">The Mavila Yuvadhara Arts & Sports Club</h1>
@@ -572,9 +667,9 @@
         <div class="header-row" style="align-items: center;">
             <div class="header-left">
                 <p class="malayalam-address">
-                    കുറുമണ്ടൽ, പരവൂർ പി ഒ<br>
-                    കൊല്ലം, കേരള<br>
-                    പിൻ : 691301
+                    ?????????, ????? ?? ?<br>
+                    ??????, ????<br>
+                    ??? : 691301
                 </p>
             </div>
             
@@ -602,17 +697,17 @@
     
     <!-- Smooth Scrolling Announcement Text Ticker Box -->
     <div class="scrolling-notice-container">
-        <div class="notice-badge">📢 CLUB NOTICE</div>
+        <div class="notice-badge">?? CLUB NOTICE</div>
         <div class="marquee-track">
             <div class="marquee-text">
-                  മാവിള യുവധാരയുടെ ആസ്ഥാന നിർമാണ ഫണ്ട് ശേഖരണം ...... എല്ലാവരുടെയും സഹകരണം അഭ്യർത്ഥിക്കുന്നു .... ചെറുതും വലുതുമായ സംഭാവനകൾ സ്വീകാര്യം .... .
+                  ????? ?????????? ?????? ?????? ????? ?????? ...... ????????????? ?????? ????????????????? .... ??????? ???????? ???????? ?????????? .... .
             </div>
         </div>
     </div>
     
     <!-- Mid-Page Welcome Title -->
     <h1 style="text-align: center; color: #ffffff; text-shadow: 0 0 10px rgba(0,0,0,0.8); font-size: 2.2em; line-height: 1.4; font-weight: bold; margin-top: 40px; margin-bottom: 15px;" class="malayalam-text">
-        മാവിള യുവധാര പോർട്ടൽ <br>
+        ????? ?????? ??????? <br>
         <span style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #58a6ff; letter-spacing: 2px; font-weight: 500; display: block; margin-top: 8px;">MAVILA YUVADHARA PORTAL</span>
     </h1>
 
@@ -622,20 +717,62 @@
     </div>
 
     <main>
-        <!-- Welcome Section -->
-        <section id="welcome">
+        <!-- Welcome section with 8-page photo book -->
+        <section id="welcome" class="welcome-book-section">
             <div class="welcome-content">
                 <h2>Welcome to Our Community</h2>
-                <p>This club was founded to bring people together through the power of arts and sports. Explore our site to see what we are all about!</p>
+            </div>
+
+            <div class="photo-book-wrap" aria-label="Club photo book">
+                <div class="photo-book" id="photoBook">
+                    <div class="book-page" data-page="0">
+                        <img src="page1.jpg" alt="Club photo book page 1">
+                        <span class="page-number">1 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="1">
+                        <img src="page2.jpg" alt="Club photo book page 2">
+                        <span class="page-number">2 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="2">
+                        <img src="page3.jpg" alt="Club photo book page 3">
+                        <span class="page-number">3 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="3">
+                        <img src="page4.jpg" alt="Club photo book page 4">
+                        <span class="page-number">4 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="4">
+                        <img src="page5.jpg" alt="Club photo book page 5">
+                        <span class="page-number">5 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="5">
+                        <img src="page6.jpg" alt="Club photo book page 6">
+                        <span class="page-number">6 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="6">
+                        <img src="page7.jpg" alt="Club photo book page 7">
+                        <span class="page-number">7 / 8</span>
+                    </div>
+                    <div class="book-page" data-page="7">
+                        <img src="page8.jpg" alt="Club photo book page 8">
+                        <span class="page-number">8 / 8</span>
+                    </div>
+                </div>
+                <div class="book-controls">
+                    <button type="button" id="prevPage" aria-label="Previous page">‹ Previous</button>
+                    <span id="bookPageStatus" aria-live="polite">Page 1 of 8</span>
+                    <button type="button" id="nextPage" aria-label="Next page">Next ›</button>
+                </div>
+                <p class="book-hint">Use the buttons or tap the page edges to turn pages.</p>
             </div>
         </section>
 
         <!-- Join Us / Registration Section -->
         <section id="join-us" class="join-us-section">
-            <h2>🤝 Join Us & Become a Member!</h2>
+            <h2>?? Join Us & Become a Member!</h2>
             <p style="color: #8b949e;">New member registrations are officially open. Be a part of our vibrant journey in arts and sports!</p>
             <a href="https://forms.gle/SemVmMphrnuEmUTe6" target="_blank" class="register-btn">
-                ⚡ REGISTER HERE (Google Form)
+                ? REGISTER HERE (Google Form)
             </a>
         </section>
 
@@ -647,7 +784,7 @@
 
         <!-- Community Submission Form Section -->
         <section id="user-submissions-section" style="padding: 30px; margin: 30px 0;">
-            <h2>📢 Submit Items, Suggestions, or Complaints</h2>
+            <h2>?? Submit Items, Suggestions, or Complaints</h2>
             <p style="color: #8b949e;">Have something to share or report? Submit it below. All submissions are reviewed by club administration before being published.</p>
             
             <form id="communityForm" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; text-align: left;">
@@ -659,9 +796,9 @@
                 <div>
                     <label style="display: block; margin-bottom: 5px; font-weight: 600;">Submission Type</label>
                     <select id="submissionType" style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box;">
-                        <option value="suggestion">💡 Suggestion</option>
-                        <option value="item">📦 Club Item / Art Resource</option>
-                        <option value="complaint">⚠️ Complaint / Feedback</option>
+                        <option value="suggestion">?? Suggestion</option>
+                        <option value="item">?? Club Item / Art Resource</option>
+                        <option value="complaint">?? Complaint / Feedback</option>
                     </select>
                 </div>
 
@@ -676,14 +813,14 @@
                 </div>
 
                 <button type="submit" style="background-color: #58a6ff; color: #000; padding: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; margin-top: 10px;">
-                    🚀 Submit for Approval
+                    ?? Submit for Approval
                 </button>
             </form>
         </section>
 
         <!-- Public Notice Board -->
         <section id="notice-board" style="padding: 30px; margin-top: 20px;">
-            <h2>📌 Community Feed & Updates</h2>
+            <h2>?? Community Feed & Updates</h2>
             <div id="approved-feed-container">
                 <p style="color: #8b949e; font-style: italic;">No recent community posts available yet.</p>
             </div>
@@ -693,7 +830,7 @@
 
         <!-- Paid Members Section -->
         <section id="paid-members" style="padding: 30px;">
-            <h2>🏅 Our Premium & Paid Members</h2>
+            <h2>?? Our Premium & Paid Members</h2>
             <p style="color: #8b949e;">Special thanks to our registered premium members for their core support.</p>
             
             <!-- ROW 1: Core Executives -->
@@ -763,7 +900,7 @@
 
         <!-- General Members Section -->
         <section id="general-members" style="margin-top: 50px;">
-            <h2>👥 General Members Directory</h2>
+            <h2>?? General Members Directory</h2>
             <p style="color: #8b949e;">The following members are part of the Mavila Yuvadhara active roster.</p>
             
            <div class="directory-grid">
@@ -938,6 +1075,49 @@
     <footer>
         &copy; 2026 Mavila Yuvadhara Arts & Sports Club. All Rights Reserved.
     </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const book = document.getElementById('photoBook');
+    if (!book) return;
+    const pages = Array.from(book.querySelectorAll('.book-page'));
+    const previous = document.getElementById('prevPage');
+    const next = document.getElementById('nextPage');
+    const status = document.getElementById('bookPageStatus');
+    let current = 0;
+
+    function showPage(index, direction) {
+        if (index < 0 || index >= pages.length || index === current) return;
+        const oldPage = pages[current];
+        oldPage.classList.remove('active');
+        if (direction === 'next') oldPage.classList.add('turning-away');
+        window.setTimeout(() => oldPage.classList.remove('turning-away'), 650);
+        current = index;
+        pages.forEach((page, i) => {
+            page.classList.toggle('active', i === current);
+            page.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        status.textContent = 'Page ' + (current + 1) + ' of ' + pages.length;
+        previous.disabled = current === 0;
+        next.disabled = current === pages.length - 1;
+    }
+    pages.forEach((page, i) => {
+        page.classList.toggle('active', i === 0);
+        page.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+    });
+    previous.addEventListener('click', () => showPage(current - 1, 'previous'));
+    next.addEventListener('click', () => showPage(current + 1, 'next'));
+    book.addEventListener('click', function (event) {
+        const rect = book.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        if (x > rect.width * 0.65) showPage(current + 1, 'next');
+        else if (x < rect.width * 0.35) showPage(current - 1, 'previous');
+    });
+    previous.disabled = true;
+    next.disabled = pages.length <= 1;
+});
+</script>
 
 </body>
 </html>
